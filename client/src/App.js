@@ -1,14 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginForm from "./pages/Login/Login";
 import './App.css';
-import NavBar from './components/Nav/NavBar'
+import NavBar from './components/Nav/NavBar';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+        <NavBar/>
+          <Switch>
+            <Route exact path="/" component={LoginForm}/>
 
-      <NavBar/>
-      
-    </div>
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
