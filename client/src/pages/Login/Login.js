@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {Component} from "react";
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 
-const LoginForm = () => (
+class LoginForm extends Component {
+
+  state = {
+
+  }
+ render() {
+ return(
+  <div>
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 500}}>
       <Header as='h2' color='green' textAlign='center'>
@@ -29,7 +36,10 @@ const LoginForm = () => (
       </Message>
     </Grid.Column>
   </Grid>
-)
+  </div>
+ )
+ }
+}
 
-export default LoginForm
+export default LoginForm;
 
