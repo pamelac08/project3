@@ -18,7 +18,13 @@ const habitSeed = [
     name: "Exercise",
     interval: "weekly",
     frequency: 5,
-    reward: "eat out for dinner"
+    reward: "Eat out for dinner"
+  },
+  {
+    name: "Eat no added sugar",
+    interval: "daily",
+    frequency: 7,
+    reward: "See a movie"
   }
 ];
 

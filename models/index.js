@@ -1,4 +1,5 @@
 module.exports = {
     Movement: require("./Movements"),
-    Habit: require("./Habits")
+    Habit: require("./Habits"),
+    Benchmark: require("./Benchmark")
 }
