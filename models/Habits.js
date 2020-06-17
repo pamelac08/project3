@@ -6,7 +6,7 @@ const habitSchema = new Schema({
     interval: {type: String, required: true},
     frequency: {type: Number, required: true},
     reward: {type: String},
-})
+});
 
 const Habit = mongoose.model("Habit", habitSchema);
 

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Button, Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Button, Menu } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 export default class nav extends Component {
     state = {}
@@ -16,7 +17,7 @@ export default class nav extends Component {
                     active={activeItem === 'Home'}
                     onClick={this.handleItemClick}
                 >
-                    <Button secondary>Home</Button>
+                    <Button as={Link} to="/" secondary>Home</Button>
 
                 </Menu.Item>
 
@@ -43,6 +44,13 @@ export default class nav extends Component {
                     onClick={this.handleItemClick}
                 >
                     <Button secondary>Random Goal OTD</Button>
+        </Menu.Item>
+                <Menu.Item
+                    name='Admin Menu'
+                    active={activeItem === 'Admin Menu'}
+                    onClick={this.handleItemClick}
+                >
+                    <Button as={Link} to="/admin" secondary>Admin Menu</Button>
         </Menu.Item>
 
                 <Menu.Menu position='right'>
