@@ -6,9 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-<<<<<<< HEAD
     "bootstrap": "^4.5.0",
-=======
+
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -16,7 +15,6 @@
     "express-jwt": "^5.3.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.19",
->>>>>>> 59803c1c4bed5247b55f98b0ac214fbc74de2148
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",

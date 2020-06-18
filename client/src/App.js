@@ -6,7 +6,7 @@ import Admin from "./pages/Admin/Admin";
 import Rewards from "./pages/Rewards/Rewards";
 import Habits from "./pages/Habits/Habits"; 
 import './App.css';
-import Header from './components/Header/Header';
+import Header from './components/Header/header';
 import NavBar from './components/Nav/NavBar';
 
 
