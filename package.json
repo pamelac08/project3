@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seedM": "node scripts/seedsMovementDB.js",
     "seedH": "node scripts/seedsHabitDB.js",
-    "seedB":"node scripts/seedsBenchmarkDB.js",
+    "seedB": "node scripts/seedsBenchmarkDB.js",
     "build": "cd client && npm run build"
   },
   "author": "",
