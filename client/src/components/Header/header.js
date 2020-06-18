@@ -1,15 +1,15 @@
-  
-import React from "react";
+ import React from "react";
+import { Image } from 'react-bootstrap';
 
 
 function Header() {
     return (
-        <div className="jumbotron text-center">
-            <div className="container text-light">
-                <h1>Auto Coach</h1>
-            </div>
-        </div>
+
+<Image src="fitness.png" width={1500} height={500}/>
+       
     );
 }
 
 export default Header;
+
+

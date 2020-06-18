@@ -3,7 +3,7 @@ import { Grid, Header, Button, Form, Segment } from 'semantic-ui-react'
 
 
 const Habits = () => (
-    <Grid columns='three' textAlign='left' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid columns='three' textAlign='left' style={{ height: '100vh' }} verticalAlign='top'>
         <Grid.Row>
             <Grid.Column>
             </Grid.Column>
@@ -14,7 +14,7 @@ const Habits = () => (
                         <Form.Input fluid label="Habit" type="text" />
                         <Form.Input fluid label="Frequency" type="text" />
                         <Form.Input fluid label="Reward" type="text" />
-                        <Button color='purple' fluid size='large'> Add </Button>
+                        <Button color='olive' fluid size='large'> Add </Button>
                     </Segment>
                 </Form>
             </Grid.Column>

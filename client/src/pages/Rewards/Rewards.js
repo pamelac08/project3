@@ -1,19 +1,21 @@
 import React from 'react'
-import { Header, Button, Icon,  Grid, } from 'semantic-ui-react'
+import { Header, Button, Icon,  Grid, Container, } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
-
+import "./reward.css"
 
 const Rewards = () => (
 
-  <Grid columns='three' textAlign='left' style={{ height: '100vh' }} verticalAlign='middle'>
+  <Container>
+    <Grid columns='three' textAlign='left' style={{ height: '100vh' }} verticalAlign='top'>
     <Grid.Row>
       <Grid.Column>
       </Grid.Column>
       <Grid.Column>
         <div >
-          <Header as='h2' icon textAlign='center'>
-            <Icon name='heartbeat' size='massive'  />
-            <Header.Content>Enter a new habit to start earning rewards!</Header.Content>
+          <Header as='h2' icon textAlign='center' >
+            
+            <Icon name='heartbeat' size='massive' color='red' />
+            <Header.Content >Enter a new habit to start earning rewards!</Header.Content>
           </Header>
         </div>
         <div style={{
@@ -22,13 +24,14 @@ const Rewards = () => (
           alignItems: "center"
         }}
         >
-          <Button as={Link} to="/habits" color='green' size='massive'>Get Started</Button>
+          <Button as={Link} to="/habits" color='olive' size='massive'>Get Started</Button>
       </div>
       </Grid.Column>
       <Grid.Column>
       </Grid.Column>
     </Grid.Row>
   </Grid>
+  </Container>
 )
 
 export default Rewards;

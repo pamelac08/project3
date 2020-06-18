@@ -9,9 +9,9 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='top'>
           <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as='h2' color='green' textAlign='center'>
+            <Header as='h2' color='olive' textAlign='center'>
               Log-in to your account
       </Header>
             <Form size='large'>
@@ -25,7 +25,7 @@ class LoginForm extends Component {
                   type='password'
                 />
 
-                <Button color='green' fluid size='large'>
+                <Button color='olive' fluid size='large'>
                   Login
           </Button>
               </Segment>

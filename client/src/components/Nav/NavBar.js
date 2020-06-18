@@ -11,7 +11,7 @@ export default class nav extends Component {
         const { activeItem } = this.state
 
         return (
-            <Menu>
+            <Menu inverted>
                 <Menu.Item
                     name='Home'
                     active={activeItem === 'Home'}
