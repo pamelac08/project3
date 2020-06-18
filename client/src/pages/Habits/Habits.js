@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Header, Button, Form, Segment } from 'semantic-ui-react'
-import "./style.css"
 
 
 const Habits = () => (
