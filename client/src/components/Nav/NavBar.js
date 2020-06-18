@@ -11,7 +11,7 @@ export default class nav extends Component {
         const { activeItem } = this.state
 
         return (
-            <Menu>
+            <Menu inverted>
                 <Menu.Item
                     name='Home'
                     active={activeItem === 'Home'}
@@ -35,7 +35,8 @@ export default class nav extends Component {
                     active={activeItem === 'Rewards Tracker'}
                     onClick={this.handleItemClick}
                 >
-                    <Button secondary>Rewards Tracker</Button>
+                    
+                    <Button as={Link} to="/rewards" secondary>Rewards Tracker</Button>
         </Menu.Item>
 
                 <Menu.Item
@@ -59,7 +60,7 @@ export default class nav extends Component {
                         active={activeItem === 'Login'}
                         onClick={this.handleItemClick}
                     >
-                        <Button secondary>Login</Button>
+                    <Button as={Link} to="/login" secondary>Log In</Button>
 
                     </Menu.Item>
 
@@ -68,7 +69,7 @@ export default class nav extends Component {
                         active={activeItem === 'Sign Up'}
                         onClick={this.handleItemClick}
                     >
-                        <Button secondary>Sign Up</Button>
+                    <Button as={Link} to="/signup" secondary>Sign Up</Button>
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>
