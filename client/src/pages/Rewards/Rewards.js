@@ -12,7 +12,7 @@ const Rewards = () => (
       <Grid.Column>
         <div >
           <Header as='h2' icon textAlign='center'>
-            <Icon name='heartbeat' size='massive' circular />
+            <Icon name='heartbeat' size='massive'  />
             <Header.Content>Enter a new habit to start earning rewards!</Header.Content>
           </Header>
         </div>
