@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class nav extends Component {
     state = {}
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
         const { activeItem } = this.state
@@ -15,7 +15,7 @@ export default class nav extends Component {
                 <Menu.Item
                     name='Home'
                     active={activeItem === 'Home'}
-                    onClick={this.handleItemClick}
+                    // onClick={this.handleItemClick}
                 >
                     <Button as={Link} to="/" secondary>Home</Button>
 
@@ -24,16 +24,16 @@ export default class nav extends Component {
                 <Menu.Item
                     name='Start Workout'
                     active={activeItem === 'Start Workout'}
-                    onClick={this.handleItemClick}
+                    // onClick={this.handleItemClick}
                 >
-                    <Button secondary>Start Workout</Button>
+                    <Button as={Link} to="/workout" secondary>Start Workout</Button>
 
                 </Menu.Item>
 
                 <Menu.Item
                     name='Rewards Tracker'
                     active={activeItem === 'Rewards Tracker'}
-                    onClick={this.handleItemClick}
+                    // onClick={this.handleItemClick}
                 >
                     
                     <Button as={Link} to="/rewards" secondary>Rewards Tracker</Button>
@@ -42,14 +42,14 @@ export default class nav extends Component {
                 <Menu.Item
                     name='Random Goal OTD'
                     active={activeItem === 'Random Goal OTD'}
-                    onClick={this.handleItemClick}
+                    // onClick={this.handleItemClick}
                 >
                     <Button secondary>Random Goal OTD</Button>
         </Menu.Item>
                 <Menu.Item
                     name='Admin Menu'
                     active={activeItem === 'Admin Menu'}
-                    onClick={this.handleItemClick}
+                    // onClick={this.handleItemClick}
                 >
                     <Button as={Link} to="/admin" secondary>Admin Menu</Button>
         </Menu.Item>
@@ -58,7 +58,7 @@ export default class nav extends Component {
                     <Menu.Item
                         name='Login'
                         active={activeItem === 'Login'}
-                        onClick={this.handleItemClick}
+                        // onClick={this.handleItemClick}
                     >
                     <Button as={Link} to="/login" secondary>Log In</Button>
 
@@ -67,7 +67,7 @@ export default class nav extends Component {
                     <Menu.Item
                         name='Sign Up'
                         active={activeItem === 'Sign Up'}
-                        onClick={this.handleItemClick}
+                        // onClick={this.handleItemClick}
                     >
                     <Button as={Link} to="/signup" secondary>Sign Up</Button>
                     </Menu.Item>
