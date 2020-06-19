@@ -29,6 +29,6 @@ export default {
         return axios.put("/api/coach/habits/" + id, updateObject);
     },
     deleteHabit: function(id) {
-        return axios.delete("/api/coach/habits/" + id)
+        return axios.delete("/api/coach/habits/" + id);
     }
 }
