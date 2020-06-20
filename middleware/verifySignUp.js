@@ -3,12 +3,11 @@ const ROLES = db.ROLES;
 // const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-
-  console.log("checkduplicate inputs: ", req.body)
+  console.log("checkduplicate inputs: ", req.body);
 
   // Username
   db.User.findOne({
-    username: req.body.username
+    username: req.body.username,
   }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -22,7 +21,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 
     // Email
     db.User.findOne({
-      email: req.body.email
+      email: req.body.email,
     }).exec((err, user) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -54,11 +53,11 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 //     }
 //   }
 
-  // next();
+// next();
 // };
 
 const verifySignUp = {
-  checkDuplicateUsernameOrEmail
+  checkDuplicateUsernameOrEmail,
   // checkRolesExisted
 };
 

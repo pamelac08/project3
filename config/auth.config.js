@@ -1,4 +1,3 @@
 module.exports = {
-    secret: "workout-secret-key"
-  };
-  
+  secret: "workout-secret-key",
+};
