@@ -22,7 +22,7 @@ module.exports = {
     },
     updateMovement: function(req, res) {
         db.Movement
-          .findOneAndUpdate({ _id: req.params.id }, {saved: true})
+          .findOneAndUpdate({ _id: req.params.id }, {equipment: req.body.equipment}, {saved: true})
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },

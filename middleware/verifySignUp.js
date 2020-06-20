@@ -1,10 +1,13 @@
 const db = require("../models");
 const ROLES = db.ROLES;
-const User = db.user;
+// const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
+
+  console.log("checkduplicate inputs: ", req.body)
+
   // Username
-  User.findOne({
+  db.User.findOne({
     username: req.body.username
   }).exec((err, user) => {
     if (err) {
@@ -18,7 +21,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     }
 
     // Email
-    User.findOne({
+    db.User.findOne({
       email: req.body.email
     }).exec((err, user) => {
       if (err) {
@@ -31,29 +34,32 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         return;
       }
 
-      next();
+      // next();
     });
   });
 };
 
-checkRolesExisted = (req, res, next) => {
-  if (req.body.roles) {
-    for (let i = 0; i < req.body.roles.length; i++) {
-      if (!ROLES.includes(req.body.roles[i])) {
-        res.status(400).send({
-          message: `Failed! Role ${req.body.roles[i]} does not exist!`
-        });
-        return;
-      }
-    }
-  }
+// checkRolesExisted = (req, res, next) => {
 
-  next();
-};
+//   console.log("checkroles inputs: ", req.body)
+
+//   if (req.body.roles) {
+//     for (let i = 0; i < req.body.roles.length; i++) {
+//       if (!ROLES.includes(req.body.roles[i])) {
+//         res.status(400).send({
+//           message: `Failed! Role ${req.body.roles[i]} does not exist!`
+//         });
+//         return;
+//       }
+//     }
+//   }
+
+  // next();
+// };
 
 const verifySignUp = {
-  checkDuplicateUsernameOrEmail,
-  checkRolesExisted
+  checkDuplicateUsernameOrEmail
+  // checkRolesExisted
 };
 
 module.exports = verifySignUp;

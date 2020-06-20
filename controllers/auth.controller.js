@@ -1,26 +1,38 @@
-const config = require("../client/config/auth.config");
+const config = require("../config/auth.config");
 const db = require("../models");
-const User = db.user;
-const Role = db.role;
+// const User = db.user;
+// const Role = db.role;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+
+
 exports.signup = (req, res) => {
-  const user = new User({
+
+  let user;
+
+  console.log("testing inside signup");
+
+  user = new db.User({
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   });
 
-  user.save((err, user) => {
+  db.User
+    .create(user)
+    .then((err, user) => {
+
+    console.log("testing inside create user - user: ", user);
+    
     if (err) {
       res.status(500).send({ message: err });
       return;
     }
 
     if (req.body.roles) {
-      Role.find(
+      db.Role.find(
         {
           name: { $in: req.body.roles }
         },
@@ -42,7 +54,7 @@ exports.signup = (req, res) => {
         }
       );
     } else {
-      Role.findOne({ name: "user" }, (err, role) => {
+      db.Role.findOne({ name: "user" }, (err, role) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
@@ -59,11 +71,11 @@ exports.signup = (req, res) => {
         });
       });
     }
-  });
+  })
 };
 
 exports.signin = (req, res) => {
-  User.findOne({
+  db.User.findOne({
     username: req.body.username
   })
     .populate("roles", "-__v")
