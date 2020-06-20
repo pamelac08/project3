@@ -37,7 +37,7 @@ export default class nav extends Component {
                 >
                     
                     <Button as={Link} to="/rewards" secondary>Rewards Tracker</Button>
-        </Menu.Item>
+                </Menu.Item>
 
                 <Menu.Item
                     name='Random Goal OTD'
@@ -45,16 +45,17 @@ export default class nav extends Component {
                     // onClick={this.handleItemClick}
                 >
                     <Button secondary>Random Goal OTD</Button>
-        </Menu.Item>
+                </Menu.Item>
+
                 <Menu.Item
                     name='Admin Menu'
                     active={activeItem === 'Admin Menu'}
                     // onClick={this.handleItemClick}
                 >
                     <Button as={Link} to="/admin" secondary>Admin Menu</Button>
-        </Menu.Item>
+                </Menu.Item>
 
-                <Menu.Menu position='right'>
+                {/* <Menu.Menu position='right'>
                     <Menu.Item
                         name='Login'
                         active={activeItem === 'Login'}
@@ -71,7 +72,7 @@ export default class nav extends Component {
                     >
                     <Button as={Link} to="/signup" secondary>Sign Up</Button>
                     </Menu.Item>
-                </Menu.Menu>
+                </Menu.Menu> */}
             </Menu>
         )
     }

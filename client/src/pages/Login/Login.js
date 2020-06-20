@@ -13,7 +13,7 @@ class LoginForm extends Component {
           <Grid.Column style={{ maxWidth: 500 }}>
             <Header as='h2' color='olive' textAlign='center'>
               Log-in to your account
-      </Header>
+            </Header>
             <Form size='large'>
               <Segment stacked>
                 <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
