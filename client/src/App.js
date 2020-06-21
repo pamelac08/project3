@@ -9,7 +9,7 @@ import Habits from "./pages/Habits/Habits";
 import './App.css';
 import Header from './components/Header/header';
 import NavBar from './components/Nav/NavBar';
-
+import CreateWorkout from './pages/CreateWorkout/CreateWorkout';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/login" component={LoginForm}/>
             <Route exact path="/header" component={LoginForm}/>
-
+            <Route exact path="/create-workout" component={CreateWorkout}/>
             
           </Switch>
       </div>
