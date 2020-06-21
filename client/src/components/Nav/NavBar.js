@@ -1,60 +1,66 @@
-import React, { Component } from 'react';
-import { Button, Menu } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Button, Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default class nav extends Component {
-    state = {}
+  state = {};
 
-    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-    render() {
-        const { activeItem } = this.state
+  render() {
+    const { activeItem } = this.state;
 
-        return (
-            <Menu inverted>
-                <Menu.Item
-                    name='Home'
-                    active={activeItem === 'Home'}
-                    // onClick={this.handleItemClick}
-                >
-                    <Button as={Link} to="/" secondary>Home</Button>
-
-                </Menu.Item>
-
-                <Menu.Item
-                    name='Start Workout'
-                    active={activeItem === 'Start Workout'}
-                    // onClick={this.handleItemClick}
-                >
-                    <Button as={Link} to="/workout" secondary>Start Workout</Button>
-
-                </Menu.Item>
-
-                <Menu.Item
-                    name='Rewards Tracker'
-                    active={activeItem === 'Rewards Tracker'}
-                    // onClick={this.handleItemClick}
-                >
-                    
-                    <Button as={Link} to="/rewards" secondary>Rewards Tracker</Button>
+    return (
+      <Menu inverted>
+        <Menu.Item
+          name="Home"
+          active={activeItem === "Home"}
+          // onClick={this.handleItemClick}
+        >
+          <Button as={Link} to="/" secondary>
+            Home
+          </Button>
         </Menu.Item>
 
-                <Menu.Item
-                    name='Random Goal OTD'
-                    active={activeItem === 'Random Goal OTD'}
-                    // onClick={this.handleItemClick}
-                >
-                    <Button secondary>Random Goal OTD</Button>
-        </Menu.Item>
-                <Menu.Item
-                    name='Admin Menu'
-                    active={activeItem === 'Admin Menu'}
-                    // onClick={this.handleItemClick}
-                >
-                    <Button as={Link} to="/admin" secondary>Admin Menu</Button>
+        <Menu.Item
+          name="Start Workout"
+          active={activeItem === "Start Workout"}
+          // onClick={this.handleItemClick}
+        >
+          <Button as={Link} to="/workout" secondary>
+            Start Workout
+          </Button>
         </Menu.Item>
 
-                <Menu.Menu position='right'>
+        <Menu.Item
+          name="Rewards Tracker"
+          active={activeItem === "Rewards Tracker"}
+          // onClick={this.handleItemClick}
+        >
+          <Button as={Link} to="/rewards" secondary>
+            Rewards Tracker
+          </Button>
+        </Menu.Item>
+
+        <Menu.Item
+          name="Random Goal OTD"
+          active={activeItem === "Random Goal OTD"}
+          // onClick={this.handleItemClick}
+        >
+          <Button secondary>Random Goal OTD</Button>
+        </Menu.Item>
+
+        <Menu.Item
+          name="Admin Menu"
+          active={activeItem === "Admin Menu"}
+          // onClick={this.handleItemClick}
+        >
+          <Button as={Link} to="/admin" secondary>
+            Admin Menu
+          </Button>
+        </Menu.Item>
+
+        {/* <Menu.Menu position='right'>
                     <Menu.Item
                         name='Login'
                         active={activeItem === 'Login'}
@@ -71,8 +77,8 @@ export default class nav extends Component {
                     >
                     <Button as={Link} to="/signup" secondary>Sign Up</Button>
                     </Menu.Item>
-                </Menu.Menu>
-            </Menu>
-        )
-    }
+                </Menu.Menu> */}
+      </Menu>
+    );
+  }
 }
