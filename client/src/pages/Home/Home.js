@@ -1,35 +1,24 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-// import { Button } from 'semantic-ui-react';
-// import { Link } from "react-router-dom";
-
-// import Header from '../../components/Header/header';
+import React, { Component } from "react";
+import { Button } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
+import "./style.css";
 
-import StartWorkout from "../StartWorkout/StartWorkout";
-import Rewards from "../Rewards/Rewards";
-import Habits from "../Habits/Habits";
-import Admin from "../Admin/Admin";
-import HomeLanding from "../HomeLanding/HomeLanding";
-
-function Home() {
-  return (
-    <Router>
+class Home extends Component {
+  render() {
+    return (
       <div className="Home">
         <NavBar />
-        {/* <Header/> */}
-
-        <Switch>
-          <Route exact path="/home" component={HomeLanding} />
-          <Route exact path="/workout" component={StartWorkout} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/rewards" component={Rewards} />
-          <Route exact path="/habits" component={Habits} />
-        </Switch>
+        <div id="buttons">
+          <Button as={Link} to="/workout" >Start Your Workout</Button>
+          <br></br><br></br>
+          <Button as={Link} to="/rewards" >View your habit tracker</Button>
+          <br></br><br></br>
+          {/* <Button as={Link} to="/goal" >Get a Goal OTD</Button> */}
+        </div>
       </div>
-    </Router>
-  );
+    );
+  }
 }
 
 export default Home;
