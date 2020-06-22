@@ -24,6 +24,9 @@ router.post("/api/auth/signup", (req, res) => {
     controller.signup(req);
 });
 
-router.post("/api/auth/signin", controller.signin);
+router.post("/api/auth/signin", (req, res) => {
+
+  controller.signin(req, res);
+});
 
 module.exports = router;

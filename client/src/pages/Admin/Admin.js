@@ -1,15 +1,9 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Segment,
-  Dropdown,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment, Dropdown, } from "semantic-ui-react";
 import API from "../../utils/API";
 import "./style.css";
+import NavBar from "../../components/Nav/NavBar";
 
 class Admin extends Component {
   state = {
@@ -44,18 +38,13 @@ class Admin extends Component {
         });
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   componentDidMount() {
-    console.log("component did mount working");
+    // console.log("component did mount working");
     this.getMovements();
     // console.log("this.state.movementNames: ", this.state.movementNames);
-  }
-
-  // componentDidUpdate() {
-  //     console.log("component did update working");
-  //     this.getMovements();
-  // };
+  };
 
   getOptions = (array) =>
     _.times(array.length, (index) => ({
@@ -68,7 +57,7 @@ class Admin extends Component {
     event.preventDefault();
 
     // this.state.nameNew = _id in database
-    console.log("this.state.nameNew in update: ", this.state.nameNew);
+    // console.log("this.state.nameNew in update: ", this.state.nameNew);
     // console.log("this.state.equipmentNew in update: ", this.state.equipmentNew);
 
     API.updateMovement(this.state.nameNew, {
@@ -135,6 +124,7 @@ class Admin extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <div id="insert-div">
           <Grid
             textAlign="left"

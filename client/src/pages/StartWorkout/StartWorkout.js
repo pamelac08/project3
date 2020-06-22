@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-// import { Button, Form, Grid, Header,Message, Segment, Dropdown } from 'semantic-ui-react';
 import { Grid, Header, Message, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./style.css";
-
+import NavBar from "../../components/Nav/NavBar";
 import Moment from "react-moment";
 import moment from "moment";
 import cheerio from "cheerio";
@@ -52,6 +51,7 @@ class StartWorkout extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <Grid
           textAlign="center"
           style={{ height: "50vh" }}
@@ -65,8 +65,8 @@ class StartWorkout extends Component {
 
             {this.state.wod.length ? (
               <Message>
-                {this.state.wod.map((wod) => (
-                  <div>
+                {this.state.wod.map((wod, i) => (
+                  <div key={i}>
                     {wod}
                     <br></br>
                   </div>
@@ -80,7 +80,7 @@ class StartWorkout extends Component {
 
         <div> -- OR --</div>
 
-        <Button as={Link} to="/create-workout">
+        <Button id="generateWorkoutButton" as={Link} to="/create-workout">
           Generate Custom Workout
         </Button>
       </div>
