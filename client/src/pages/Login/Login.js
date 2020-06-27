@@ -52,7 +52,7 @@ class LoginForm extends Component {
           verticalAlign="top"
         >
           <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as="h2" color="olive" textAlign="center">
+            <Header as="h2" color="teal" textAlign="center">
               Log-in to your account
             </Header>
             <Form size="large">
@@ -78,7 +78,7 @@ class LoginForm extends Component {
                 />
 
                 <Button
-                  color="olive"
+                  color="teal"
                   fluid
                   size="large"
                   onClick={this.handleSubmitForm}

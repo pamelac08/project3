@@ -11,7 +11,7 @@ class Signup extends Component {
   <div>
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='top'>
     <Grid.Column style={{ maxWidth: 500}}>
-      <Header as='h2' color='olive' textAlign='center'>
+      <Header as='h2' color='teal' textAlign='center'>
          Sign Up 
       </Header>
       <Form size='large'>
@@ -31,7 +31,7 @@ class Signup extends Component {
             placeholder='Password'
             type='password'
           />
-          <Button onClick={()=>console.log ("hello")} color='olive' fluid size='large'>
+          <Button onClick={()=>console.log ("hello")} color='teal' fluid size='large'>
             Create Account
           </Button>
         </Segment>

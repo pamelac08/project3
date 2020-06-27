@@ -132,7 +132,7 @@ class Admin extends Component {
             verticalAlign="middle"
           >
             <Grid.Column>
-              <Header as="h2" color="olive" textAlign="center">
+              <Header as="h2" color="teal" textAlign="center">
                 Add a Movement to Database
               </Header>
               <Form size="large">
@@ -173,7 +173,7 @@ class Admin extends Component {
                   />
 
                   <Button
-                    color="olive"
+                    color="teal"
                     fluid
                     size="large"
                     onClick={this.handleSubmitFormNew}
@@ -193,7 +193,7 @@ class Admin extends Component {
             verticalAlign="middle"
           >
             <Grid.Column>
-              <Header as="h2" color="olive" textAlign="center">
+              <Header as="h2" color="teal" textAlign="center">
                 Update/Delete Movements from Database
               </Header>
               <Form size="large">
@@ -237,7 +237,7 @@ class Admin extends Component {
                   />
 
                   <Button
-                    color="olive"
+                    color="teal"
                     fluid
                     size="small"
                     onClick={this.updateMovement}
@@ -246,7 +246,7 @@ class Admin extends Component {
                   </Button>
                  <br></br>
                   <Button
-                    color="olive"
+                    color="teal"
                     fluid
                     size="small"
                     onClick={this.deleteMovement}

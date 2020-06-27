@@ -32,7 +32,7 @@ const Rewards = () => (
                 alignItems: "center",
               }}
             >
-              <Button as={Link} to="/habits" color="olive" size="massive">
+              <Button as={Link} to="/habits" color="teal" size="massive">
                 Get Started
               </Button>
             </div>

@@ -58,7 +58,7 @@ class StartWorkout extends Component {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as="h2" color="olive" textAlign="center">
+            <Header as="h2" color="teal" textAlign="center">
               Crossfit WOD for{" "}
               <Moment format="MM/DD/YYYY">{this.state.date}</Moment>
             </Header>
@@ -80,7 +80,8 @@ class StartWorkout extends Component {
 
         <div> -- OR --</div>
 <br></br>
-        <Button id="generateWorkoutButton" as={Link} to="/create-workout" color="olive" size="massive">
+        <Button id="generateWorkoutButton" as={Link} to="/create-workout" color="teal
+        " size="massive">
           Generate Custom Workout
         </Button>
       </div>
