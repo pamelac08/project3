@@ -47,7 +47,7 @@ export default class nav extends Component {
           active={activeItem === "Random Goal OTD"}
           // onClick={this.handleItemClick}
         >
-          <Button secondary>Random Goal OTD</Button>
+          <Button as={Link} to="/random" secondary>Random Goal OTD</Button>
         </Menu.Item>
 
         <Menu.Item
