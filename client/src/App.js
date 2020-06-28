@@ -11,6 +11,7 @@ import Random from "./pages/Random/Random";
 import "./App.css";
 import Header from "./components/Header/header";
 import Navbar from "./components/Nav/NavBar";
+import Footer from "./components/Footer/Footer";
 import CreateWorkout from './pages/CreateWorkout/CreateWorkout';
 
 
@@ -35,6 +36,7 @@ class App extends Component {
             <Route exact path="/random" component={Random}/>
           </Switch>
         </Router>
+        <Footer/>
       </div>
     );
   };
