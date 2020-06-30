@@ -7,8 +7,11 @@ import Admin from "./pages/Admin/Admin";
 import Rewards from "./pages/Rewards/Rewards";
 import Habits from "./pages/Habits/Habits";
 import Home from "./pages/Home/Home";
+import Random from "./pages/Random/Random";
 import "./App.css";
 import Header from "./components/Header/header";
+import Navbar from "./components/Nav/NavBar";
+import Footer from "./components/Footer/Footer";
 import CreateWorkout from './pages/CreateWorkout/CreateWorkout';
 
 
@@ -21,6 +24,7 @@ class App extends Component {
         <Header />
         <Router>
           <Switch>
+          <Route exact path="/navbar" component={Navbar} />
             <Route exact path="/" component={LoginForm} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/home" component={Home} />
@@ -29,8 +33,10 @@ class App extends Component {
             <Route exact path="/rewards" component={Rewards} />
             <Route exact path="/habits" component={Habits} />
             <Route exact path="/create-workout" component={CreateWorkout}/>
+            <Route exact path="/random" component={Random}/>
           </Switch>
         </Router>
+        <Footer/>
       </div>
     );
   };

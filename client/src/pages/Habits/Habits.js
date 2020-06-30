@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Header, Button, Form, Segment } from "semantic-ui-react";
+import { Grid, Header, Button, Form, Segment, Card } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
 import API from "../../utils/API";
@@ -55,8 +55,10 @@ class Habits extends Component {
           columns="three"
           textAlign="left"
           style={{ height: "100vh" }}
-          verticalAlign="top"
+          verticalAlign="center"
         >
+
+
           <Grid.Row>
             <Grid.Column></Grid.Column>
             <Grid.Column>
@@ -96,7 +98,7 @@ class Habits extends Component {
                     onChange={this.handleInputChange}
                   />
                   <Button
-                    color="olive"
+                    color="teal"
                     fluid
                     size="large"
                     onClick={this.handleSubmitForm}
@@ -109,6 +111,107 @@ class Habits extends Component {
             </Grid.Column>
             <Grid.Column></Grid.Column>
           </Grid.Row>
+
+
+          <Grid.Row >
+            <Grid.Column>
+              <Card
+                color='teal'>
+                <Card.Content
+                  header='Habit 1'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color='teal'>
+                <Card.Content
+                  header='Habit 2'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color='teal'>
+                <Card.Content
+                  header='Habit 3'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
+
+
+          <Grid.Row>
+            <Grid.Column>
+              <Card color='teal'>
+                <Card.Content
+                  header='Habit 4'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color='teal'>
+                <Card.Content
+                  header='Habit 5'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color='teal'>
+                <Card.Content
+                  header='Habit 6'
+                  meta='Interval'
+                  description='* reward goes here *'
+                />
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='green'> Claim Reward </Button>
+                    <Button basic color='red'>   Try again next week!  </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
+
+
         </Grid>
       </div>
     );

@@ -10,9 +10,9 @@ class Home extends Component {
       <div className="Home">
         <NavBar />
         <div id="buttons">
-          <Button as={Link} to="/workout" >Start Your Workout</Button>
+          <Button as={Link} to="/workout" color="teal" size="massive" >Start Your Workout</Button>
           <br></br><br></br>
-          <Button as={Link} to="/rewards" >View your habit tracker</Button>
+          <Button as={Link} to="/rewards" color="teal" size="massive" >View your habit tracker</Button>
           <br></br><br></br>
           {/* <Button as={Link} to="/goal" >Get a Goal OTD</Button> */}
         </div>

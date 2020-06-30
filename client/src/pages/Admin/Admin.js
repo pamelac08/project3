@@ -128,11 +128,11 @@ class Admin extends Component {
         <div id="insert-div">
           <Grid
             textAlign="left"
-            style={{ height: "100vh" }}
+            style={{ height: "50vh" }}
             verticalAlign="middle"
           >
             <Grid.Column>
-              <Header as="h2" color="blue" textAlign="center">
+              <Header as="h2" color="teal" textAlign="center">
                 Add a Movement to Database
               </Header>
               <Form size="large">
@@ -173,7 +173,7 @@ class Admin extends Component {
                   />
 
                   <Button
-                    color="blue"
+                    color="teal"
                     fluid
                     size="large"
                     onClick={this.handleSubmitFormNew}
@@ -189,11 +189,11 @@ class Admin extends Component {
         <div id="update-div">
           <Grid
             textAlign="left"
-            style={{ height: "100vh" }}
+            style={{ height: "50vh" }}
             verticalAlign="middle"
           >
             <Grid.Column>
-              <Header as="h2" color="blue" textAlign="center">
+              <Header as="h2" color="teal" textAlign="center">
                 Update/Delete Movements from Database
               </Header>
               <Form size="large">
@@ -237,15 +237,16 @@ class Admin extends Component {
                   />
 
                   <Button
-                    color="blue"
+                    color="teal"
                     fluid
                     size="small"
                     onClick={this.updateMovement}
                   >
                     Update
                   </Button>
+                 <br></br>
                   <Button
-                    color="blue"
+                    color="teal"
                     fluid
                     size="small"
                     onClick={this.deleteMovement}

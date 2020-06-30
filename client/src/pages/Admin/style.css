@@ -1,3 +1,6 @@
+body {
+  background-color: grey;
+}
 #insert-div {
   float: left;
   margin: auto;
