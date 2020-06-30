@@ -4,9 +4,9 @@ import React from 'react'
 
 
 const WOButton = ()=> (
-<div class="ui buttons">
-  <button class="ui button">Cardio</button>
-  <button class="ui button">Weights</button>
+<div className="ui buttons">
+  <button className="ui button">Cardio</button>
+  <button className="ui button">Weights</button>
 </div>
 )
 

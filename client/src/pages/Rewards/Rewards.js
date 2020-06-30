@@ -3,10 +3,12 @@ import { Header, Button, Icon, Grid, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./reward.css";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
 
 const Rewards = () => (
   <div>
     <NavBar />
+    <AppHeader/>
     <Container>
       <Grid
         columns="three"

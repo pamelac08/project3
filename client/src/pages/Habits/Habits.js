@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Grid, Header, Button, Form, Segment, Card } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
 
 class Habits extends Component {
@@ -51,6 +52,7 @@ class Habits extends Component {
     return (
       <div>
         <NavBar />
+        <AppHeader/>
         <Grid
           columns="three"
           textAlign="left"

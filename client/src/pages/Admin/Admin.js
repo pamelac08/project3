@@ -4,6 +4,8 @@ import { Button, Form, Grid, Header, Segment, Dropdown, } from "semantic-ui-reac
 import API from "../../utils/API";
 import "./style.css";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
+import { Link } from "react-router-dom";
 
 class Admin extends Component {
   state = {
@@ -21,7 +23,7 @@ class Admin extends Component {
   getMovements() {
     API.getAllMovements()
       .then((res) => {
-        // console.log("all movements res: ", res.data);
+        console.log("all movements res: ", res.data);
         let allMovements = res.data;
         let movementName = [];
 
@@ -121,10 +123,17 @@ class Admin extends Component {
     });
   };
 
+  // toUserAdmin = (event) => {
+    // event.preventDefault();
+    // console.log("event: ", event);
+  //    <Redirect to="/adminuser"/>
+  // }
+
   render() {
     return (
       <div>
         <NavBar />
+        <AppHeader/>
         <div id="insert-div">
           <Grid
             textAlign="left"
@@ -258,6 +267,7 @@ class Admin extends Component {
             </Grid.Column>
           </Grid>
         </div>
+        <Button as={Link} to="/adminuser">Go to User Admin</Button>
       </div>
     );
   }

@@ -6,4 +6,6 @@ router.use("/coach", coachRoutes);
 
 router.route("/habits").get(appController.findAllHabit);
 
+router.route("/users").get(appController.findAllUsers);
+
 module.exports = router;

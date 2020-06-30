@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import LOGINAPI from "../../utils/LoginAPI";
+import AppHeader from "../../components/Header/header";
 
 class Signup extends Component {
   state = {
@@ -42,6 +43,8 @@ class Signup extends Component {
 
   render() {
     return (
+      <div>
+        <AppHeader/>
       <div>
         <Grid
           textAlign="center"
@@ -96,6 +99,7 @@ class Signup extends Component {
             </Form>
           </Grid.Column>
         </Grid>
+      </div>
       </div>
     );
   }

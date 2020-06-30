@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import WOCDropDown from "./WODropDown";
 import WOButton from "./WOButton";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
 
 class CreateWorkout extends Component {
   render() {
     return (
       <div>
         <NavBar />
+        <AppHeader/>
         <WOButton></WOButton>
         <WOCDropDown
           fieldName={"Area of Focus"}
@@ -53,19 +55,19 @@ class CreateWorkout extends Component {
           fieldName={"Equipment"}
           optionData={[
             {
-              key: "test",
-              text: "test",
-              value: "test",
+              key: "test1",
+              text: "test1",
+              value: "test1",
             },
             {
-              key: "test",
-              text: "test",
-              value: "test",
+              key: "test2",
+              text: "test2",
+              value: "test2",
             },
             {
-              key: "test",
-              text: "test",
-              value: "test",
+              key: "test3",
+              text: "test3",
+              value: "test3",
             },
           ]}
         />
