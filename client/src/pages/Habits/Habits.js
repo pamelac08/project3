@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Grid, Header, Button, Form, Segment, Card } from "semantic-ui-react";
+import { Grid, Header, Button, Form, Segment } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
-
+import HabitCard from "../../components/Card/Card";
+import "./style.css";
 class Habits extends Component {
   state = {
     habitName: "",
@@ -12,7 +13,32 @@ class Habits extends Component {
     habitFrequency: "",
     reward: "",
     redirect: false,
+    habits: []
   };
+
+  componentDidMount() {
+    API.getAllHabits().then((res) => {
+      console.log("res.data all habits", res.data);
+
+      let allHabits = res.data;
+      let habitArray = [];
+
+      allHabits.map((habit) =>
+        habitArray.push({
+          name: habit.name,
+          interval: habit.interval,
+          frequency: habit.frequency,
+          reward: habit.reward,
+          id: habit._id
+        })
+      );
+
+      console.log("habitArray object array: ", habitArray);
+      this.setState({
+        habits: habitArray,
+      });
+    });
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,11 +79,20 @@ class Habits extends Component {
       <div>
         <NavBar />
         <AppHeader/>
+
+      <div className="allCards">
+        {this.state.habits.map((habit, i) => (
+          <HabitCard key={i}
+            description={habit.name}
+          />
+        ))}
+      </div>
+      <div className="submitForm">
         <Grid
           columns="three"
           textAlign="left"
           style={{ height: "100vh" }}
-          verticalAlign="center"
+          verticalAlign="middle"
         >
 
 
@@ -113,108 +148,8 @@ class Habits extends Component {
             </Grid.Column>
             <Grid.Column></Grid.Column>
           </Grid.Row>
-
-
-          <Grid.Row >
-            <Grid.Column>
-              <Card
-                color='teal'>
-                <Card.Content
-                  header='Habit 1'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column>
-              <Card color='teal'>
-                <Card.Content
-                  header='Habit 2'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column>
-              <Card color='teal'>
-                <Card.Content
-                  header='Habit 3'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid.Row>
-
-
-          <Grid.Row>
-            <Grid.Column>
-              <Card color='teal'>
-                <Card.Content
-                  header='Habit 4'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column>
-              <Card color='teal'>
-                <Card.Content
-                  header='Habit 5'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column>
-              <Card color='teal'>
-                <Card.Content
-                  header='Habit 6'
-                  meta='Interval'
-                  description='* reward goes here *'
-                />
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'> Claim Reward </Button>
-                    <Button basic color='red'>   Try again next week!  </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid.Row>
-
-
         </Grid>
+        </div>
       </div>
     );
   }

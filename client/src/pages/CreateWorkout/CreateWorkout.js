@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import WOCDropDown from "./WODropDown";
-import WOButton from "./WOButton";
+import WOCDropDown from "../../components/WorkoutSelection/WODropDown";
+import WOButton from "../../components/WorkoutSelection/WOButton";
+import SubmitButton from "../../components/WorkoutSelection/SubmitButton";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
 
@@ -15,62 +16,88 @@ class CreateWorkout extends Component {
           fieldName={"Area of Focus"}
           optionData={[
             {
-              key: "Abs",
-              text: "Abs",
-              value: "abs",
+              key: "",
+              text: "Upper Body",
+              value: "",
             },
             {
-              key: "Arms",
-              text: "Arms",
-              value: "arms",
+              key: "",
+              text: "Full Body",
+              value: "",
             },
             {
-              key: "Back",
-              text: "Back",
-              value: "back",
-            },
-            {
-              key: "Chest",
-              text: "Chest",
-              value: "chest",
-            },
-            {
-              key: "Full-body",
-              text: "Full-body",
-              value: "full-body",
-            },
-            {
-              key: "Legs",
-              text: "Legs",
-              value: "legs",
-            },
-            {
-              key: "Shoulders",
-              text: "Shoulders",
-              value: "shoulders",
+              key: "",
+              text: "Lower Body",
+              value: "",
             },
           ]}
         />
         <WOCDropDown
-          fieldName={"Equipment"}
+          fieldName={"Cardio Equipment"}
           optionData={[
             {
-              key: "test1",
-              text: "test1",
-              value: "test1",
+              key: "",
+              text: "Box Step",
+              value: "",
             },
             {
-              key: "test2",
-              text: "test2",
-              value: "test2",
+              key: "",
+              text: "Jump Rope",
+              value: "",
             },
             {
-              key: "test3",
-              text: "test3",
-              value: "test3",
+              key: "",
+              text: "Rowing Machine",
+              value: "",
             },
           ]}
         />
+        <WOCDropDown
+          fieldName={"Weight Equipment"}
+          optionData={[
+            {
+              key: "",
+              text: "Barbell",
+              value: "",
+            },
+            {
+              key: "",
+              text: "Dumbbell",
+              value: "",
+            },
+            {
+              key: "",
+              text: "Kettlebell",
+              value: "",
+            },
+            {
+              key: "",
+              text: "Medicine Ball",
+              value: "",
+            },
+          ]}
+        />
+        <WOCDropDown
+          fieldName={"Strength"}
+          optionData={[
+            {
+              key: "",
+              text: "Burpees",
+              value: "",
+            },
+            {
+              key: "",
+              text: "Lunges",
+              value: "",
+            },
+            {
+              key: "",
+              text: "Push-ups",
+              value: "",
+            },
+          ]}
+        />
+        <SubmitButton></SubmitButton>
       </div>
     );
   }

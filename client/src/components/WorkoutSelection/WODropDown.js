@@ -2,8 +2,6 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
-
-
 const WOCDropDown = props => (
   <Dropdown
     placeholder={props.fieldName}

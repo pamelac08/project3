@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 
 function Footer() {
-  return <div class="bottom">
-    <p class="footer"> Project 3 © 2020</p>
+  return <div className="bottom">
+    <p className="footer"> Project 3 © 2020</p>
   </div>
 }
 

@@ -4,7 +4,9 @@ const appController = require("../../controllers/appController");
 
 router.use("/coach", coachRoutes);
 
-router.route("/habits").get(appController.findAllHabit);
+router.route("/habits")
+    .post(appController.createHabit)
+    .get(appController.findAllHabit);
 
 router.route("/users").get(appController.findAllUsers);
 

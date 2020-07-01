@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Button,Form,Grid,Header,Message,Segment,} from "semantic-ui-react";
-// import LoginForm from "./pages/Login/Login";
-import Signup from "./pages/Sign up/Signup";
+
+import Home from "./pages/Home/Home";
+import Signup from "./pages/SignUp/Signup";
 import StartWorkout from "./pages/StartWorkout/StartWorkout";
 import Admin from "./pages/Admin/Admin";
 import AdminUser from "./pages/Admin/AdminUser";
 import Rewards from "./pages/Rewards/Rewards";
 import Habits from "./pages/Habits/Habits";
-import Home from "./pages/Home/Home";
 import Random from "./pages/Random/Random";
+import CreateWorkout from "./pages/CreateWorkout/CreateWorkout";
 import "./App.css";
 
 import Footer from "./components/Footer/Footer";
-
 import AppHeader from "./components/Header/header";
-import CreateWorkout from "./pages/CreateWorkout/CreateWorkout";
+
 import { userContext } from "./userContext";
 import LOGINAPI from "./utils/LoginAPI";
 
@@ -84,9 +84,7 @@ class App extends Component {
 
   signup = (event) => {
     event.preventDefault();
-
     this.setState({ signup: true });
-    return <Redirect to="/signup" />;
   };
 
   logout = this.logout.bind(this);
@@ -113,19 +111,16 @@ class App extends Component {
       return (
         <userContext.Provider value={value}>
           <div className="App">
-            {/* <Header /> */}
             <Router>
               <Switch>
-                <Route exact path="/" component={Home} />
-                {/* <Route exact path="/" component={LoginForm} /> */}
-                {/* <Route exact path="/signup" component={Signup} /> */}
                 <Route exact path="/workout" component={StartWorkout} />
-                <Route exact path="/admin" component={Admin} />
-                <Route exact path="/adminuser" component={AdminUser} />
+                <Route exact path="/create-workout" component={CreateWorkout} />
                 <Route exact path="/rewards" component={Rewards} />
                 <Route exact path="/habits" component={Habits} />
-                <Route exact path="/create-workout" component={CreateWorkout} />
                 <Route exact path="/random" component={Random}/>
+                <Route exact path="/admin" component={Admin} />
+                <Route exact path="/adminuser" component={AdminUser} />
+                <Route path="/" component={Home} />
               </Switch>
             </Router>
             <Footer/>
