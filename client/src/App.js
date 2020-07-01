@@ -12,7 +12,9 @@ import "./App.css";
 import Header from "./components/Header/header";
 import Navbar from "./components/Nav/NavBar";
 import Footer from "./components/Footer/Footer";
+import Card from "./components/Card/Card";
 import CreateWorkout from './pages/CreateWorkout/CreateWorkout';
+import habitCard from "./components/Card/Card";
 
 
 class App extends Component {
@@ -34,6 +36,7 @@ class App extends Component {
             <Route exact path="/habits" component={Habits} />
             <Route exact path="/create-workout" component={CreateWorkout}/>
             <Route exact path="/random" component={Random}/>
+            <Route exact path="/habitCard" component={habitCard}/>
           </Switch>
         </Router>
         <Footer/>
