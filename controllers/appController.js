@@ -60,4 +60,10 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+
+  findAllUsers: function (req, res) {
+    db.User.find()
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  }
 };

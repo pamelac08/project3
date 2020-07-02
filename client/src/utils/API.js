@@ -17,10 +17,10 @@ export default {
     return axios.delete("http://localhost:3001/api/coach/" + id);
   },
   getAllHabits: function () {
-    return axios.get("http://localhost:3001/api/coach/habits");
+    return axios.get("http://localhost:3001/api/habits");
   },
   saveHabit: function (newHabit) {
-    return axios.post("http://localhost:3001/api/coach/habits", newHabit);
+    return axios.post("http://localhost:3001/api/habits", newHabit);
   },
   getOneHabit: function (id) {
     return axios.get("http://localhost:3001/api/coach/habits/" + id);

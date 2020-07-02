@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Grid, Header, Button, Form, Segment, Card } from "semantic-ui-react";
+import { Grid, Header, Button, Form, Segment } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
-import habitCard from "../../components/Card/Card";
-
+import HabitCard from "../../components/Card/Card";
+import "./style.css";
 class Habits extends Component {
   state = {
     habitName: "",
@@ -12,7 +13,32 @@ class Habits extends Component {
     habitFrequency: "",
     reward: "",
     redirect: false,
+    habits: []
   };
+
+  componentDidMount() {
+    API.getAllHabits().then((res) => {
+      console.log("res.data all habits", res.data);
+
+      let allHabits = res.data;
+      let habitArray = [];
+
+      allHabits.map((habit) =>
+        habitArray.push({
+          name: habit.name,
+          interval: habit.interval,
+          frequency: habit.frequency,
+          reward: habit.reward,
+          id: habit._id
+        })
+      );
+
+      console.log("habitArray object array: ", habitArray);
+      this.setState({
+        habits: habitArray,
+      });
+    });
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -52,12 +78,21 @@ class Habits extends Component {
     return (
       <div>
         <NavBar />
-        <habitCard/>
+        <AppHeader/>
+
+      <div className="allCards">
+        {this.state.habits.map((habit, i) => (
+          <HabitCard key={i}
+            description={habit.name}
+          />
+        ))}
+      </div>
+      <div className="submitForm">
         <Grid
           columns="three"
           textAlign="left"
           style={{ height: "100vh" }}
-          verticalAlign="center"
+          verticalAlign="middle"
         >
 
 
@@ -114,6 +149,7 @@ class Habits extends Component {
             <Grid.Column></Grid.Column>
           </Grid.Row>
         </Grid>
+        </div>
       </div>
     );
   }

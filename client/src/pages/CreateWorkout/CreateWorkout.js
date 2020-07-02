@@ -3,12 +3,14 @@ import WOCDropDown from "../../components/WorkoutSelection/WODropDown";
 import WOButton from "../../components/WorkoutSelection/WOButton";
 import SubmitButton from "../../components/WorkoutSelection/SubmitButton";
 import NavBar from "../../components/Nav/NavBar";
+import AppHeader from "../../components/Header/header";
 
 class CreateWorkout extends Component {
   render() {
     return (
       <div>
         <NavBar />
+        <AppHeader/>
         <WOButton></WOButton>
         <WOCDropDown
           fieldName={"Area of Focus"}
