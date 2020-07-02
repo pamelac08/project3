@@ -6,14 +6,20 @@ import NavBar from "../../components/Nav/NavBar";
 import Moment from "react-moment";
 import moment from "moment";
 import cheerio from "cheerio";
+import AppHeader from "../../components/Header/header";
 
 class StartWorkout extends Component {
+
+  _isMounted = false;
+
   state = {
     wod: [],
     date: new Date(),
+    isLoading: true
   };
 
   componentDidMount() {
+    this._isMounted = true;
     // console.log("this.state.date: ", JSON.stringify(this.state.date));
     let newDate = moment().format("YYMMDD");
     // console.log("newdate: ", newDate);
@@ -28,6 +34,7 @@ class StartWorkout extends Component {
     fetch(proxyurl + url + date)
       .then((response) => response.text())
       .then((response) => {
+
         // console.log("contents: ", response)
         let $ = cheerio.load(response);
         // console.log("$ scrape response: ", $);
@@ -44,14 +51,20 @@ class StartWorkout extends Component {
         // console.log("workout array, scrape response: ", workout);
         this.setState({
           wod: workout,
+          isLoading: false
         });
       });
   };
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     return (
       <div>
         <NavBar />
+        <AppHeader/>
         <Grid
           textAlign="center"
           style={{ height: "25vh" }}

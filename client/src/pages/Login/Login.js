@@ -1,16 +1,23 @@
 import React, { Component } from "react";
-import { Button, Form, Grid, Header, Message, Segment, } from "semantic-ui-react";
-import LOGINAPI from "../../utils/LoginAPI";
-import { Redirect } from "react-router-dom";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+} from "semantic-ui-react";
+
+
 
 class LoginForm extends Component {
+ 
   state = {
     email: "",
     password: "",
-    user: {},
-    redirect: false,
+    user: {}
   };
-
+ 
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -26,7 +33,9 @@ class LoginForm extends Component {
       password: this.state.password,
     })
       .then((res) => {
+
         console.log("res - login: ", res.data);
+
         this.setState({
           email: "",
           password: "",
@@ -37,13 +46,9 @@ class LoginForm extends Component {
       .catch((err) => console.log(err));
   };
 
+  
+
   render() {
-    const { redirect } = this.state;
-
-    if (redirect) {
-      return <Redirect to="/home" />;
-    }
-
     return (
       <div>
         <Grid

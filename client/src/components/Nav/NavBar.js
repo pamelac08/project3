@@ -17,7 +17,7 @@ export default class nav extends Component {
           active={activeItem === "Home"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/home" secondary>
+          <Button as={Link} to="/" secondary>
             Home
           </Button>
         </Menu.Item>

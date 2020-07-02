@@ -14,11 +14,6 @@ router
   .delete(appController.removeMovement);
 
 router
-  .route("/habits")
-  // .get(appController.findAllHabit)
-  .post(appController.createHabit);
-
-router
   .route("/habits/:id")
   .get(appController.findOneHabit)
   .put(appController.updateHabit)
