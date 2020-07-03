@@ -1,8 +1,11 @@
 import React from 'react'
 
-const SubmitButton = ()=> (
-<div class="ui button">
-  <button class="ui teal button">Submit</button>
+const SubmitButton = props => (
+<div className="ui button">
+  <button 
+  className="ui teal button"
+  onClick={props.onClick}
+  >Submit</button>
 </div>
 )
 

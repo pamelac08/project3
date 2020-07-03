@@ -1,10 +1,10 @@
 import React from 'react'
 
 const WOButton = ()=> (
-  <div class="ui large buttons">
-  <button class="ui teal button">Weights</button>
-  <div class="or"></div>
-  <button class="ui teal button">Cardio</button>
+  <div className="ui large buttons">
+  <button className="ui teal button">Weights</button>
+  <div className="or"></div>
+  <button className="ui teal button">Cardio</button>
 </div>
 )
 

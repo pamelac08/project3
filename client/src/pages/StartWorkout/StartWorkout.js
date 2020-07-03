@@ -93,8 +93,7 @@ class StartWorkout extends Component {
 
         <div> -- OR --</div>
 <br></br>
-        <Button id="generateWorkoutButton" as={Link} to="/create-workout" color="teal
-        " size="massive">
+        <Button id="generateWorkoutButton" as={Link} to="/create-workout" color="teal" size="massive">
           Generate Custom Workout
         </Button>
       </div>

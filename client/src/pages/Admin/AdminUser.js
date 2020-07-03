@@ -104,7 +104,7 @@ class AdminUser extends Component {
         <NavBar />
         <AppHeader/>
 
-        <div id="update-div">
+        <div id="update-user-div">
           <Grid
             textAlign="left"
             style={{ height: "100vh" }}
