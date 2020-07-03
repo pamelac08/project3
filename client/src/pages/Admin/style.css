@@ -1,18 +1,22 @@
 body {
   background-color: grey;
+  min-height: min-content;
 }
 #insert-div {
-  float: left;
+  /* float: left; */
   margin: auto;
   width: 45%;
   padding: 1rem;
 }
 
-#update-div {
-  float: right;
+#update-div,
+#update-user-div {
+  /* float: right; */
   margin: auto;
   width: 45%;
   padding: 1rem;
+  margin-top: 100px;
+  margin-bottom: 200px;
 }
 
 #dropdown-movements {

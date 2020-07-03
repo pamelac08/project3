@@ -2,10 +2,11 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Button, Form, Grid, Header, Segment, Dropdown, } from "semantic-ui-react";
 import API from "../../utils/API";
+import LOGINAPI from "../../utils/LoginAPI";
 import "./style.css";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class Admin extends Component {
   state = {
@@ -18,6 +19,11 @@ class Admin extends Component {
     focusNew: "",
     scaledNew: "",
     movementNames: [],
+
+    emailNew: "",
+    usernameNew: "",
+    roleNew: "",
+    userEmails: [],
   };
 
   getMovements() {
@@ -45,6 +51,7 @@ class Admin extends Component {
   componentDidMount() {
     // console.log("component did mount working");
     this.getMovements();
+    this.getUsers();
     // console.log("this.state.movementNames: ", this.state.movementNames);
   };
 
@@ -58,23 +65,44 @@ class Admin extends Component {
   updateMovement = (event) => {
     event.preventDefault();
 
-    // this.state.nameNew = _id in database
-    // console.log("this.state.nameNew in update: ", this.state.nameNew);
-    // console.log("this.state.equipmentNew in update: ", this.state.equipmentNew);
-
+    if (this.state.equipmentNew) {
     API.updateMovement(this.state.nameNew, {
       equipment: this.state.equipmentNew,
     })
       .then((res) => {
         // console.log(res.json())
         this.setState({
-          nameNew: "",
           equipmentNew: "",
-          focusNew: "",
-          scaledNew: "",
         });
       })
       .catch((err) => console.log(err));
+    }
+
+    if (this.state.focusNew) {
+      API.updateMovement(this.state.nameNew, {
+        focus: this.state.focusNew,
+      })
+        .then((res) => {
+          // console.log(res.json())
+          this.setState({
+            focusNew: "",
+          });
+        })
+        .catch((err) => console.log(err));
+    }
+
+    if (this.state.scaledNew) {
+      API.updateMovement(this.state.nameNew, {
+        scaled: this.state.scaledNew,
+      })
+        .then((res) => {
+          // console.log(res.json())
+          this.setState({
+            scaled: "",
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   deleteMovement = (event) => {
@@ -123,11 +151,73 @@ class Admin extends Component {
     });
   };
 
-  // toUserAdmin = (event) => {
-    // event.preventDefault();
-    // console.log("event: ", event);
-  //    <Redirect to="/adminuser"/>
-  // }
+ 
+  getUsers() {
+    LOGINAPI.getAllUsers()
+      .then((res) => {
+        console.log("all users res: ", res.data);
+        let allUsers = res.data;
+        let userEmail = [];
+
+        allUsers.map((user) =>
+          userEmail.push({
+            useremail: user.email,
+            userid: user._id,
+          })
+        );
+
+        // console.log("movementname object array: ", movementName);
+        this.setState({
+          userEmails: userEmail,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+
+  getUserOptions = (array) =>
+    _.times(array.length, (index) => ({
+      key: index,
+      text: array[index].useremail,
+      value: array[index].userid,
+    }));
+
+  updateUser = (event) => {
+    event.preventDefault();
+
+    // this.state.nameNew = _id in database
+    // console.log("this.state.nameNew in update: ", this.state.nameNew);
+    // console.log("this.state.equipmentNew in update: ", this.state.equipmentNew);
+
+    LOGINAPI.updateUser(this.state.emailNew, {
+      username: this.state.usernameNew,
+      roles: this.state.roleNew
+    })
+      .then((res) => {
+        // console.log(res.json())
+        this.setState({
+            emailNew: "",
+            usernameNew: "",
+            roleNew: "",
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  deleteUser = (event) => {
+    event.preventDefault();
+
+    LOGINAPI.deleteUser(this.state.emailNew)
+      .then((res) => {
+        this.setState({
+          emailNew: "",
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+
 
   render() {
     return (
@@ -267,7 +357,71 @@ class Admin extends Component {
             </Grid.Column>
           </Grid>
         </div>
-        <Button as={Link} to="/adminuser">Go to User Admin</Button>
+
+        <div id="update-user-div">
+          <Grid
+            textAlign="left"
+            style={{ height: "50vh" }}
+            verticalAlign="middle"
+          >
+            <Grid.Column>
+              <Header as="h2" color="teal" textAlign="center">
+                Update/Delete Users
+              </Header>
+              <Form size="large">
+                <Segment stacked>
+                  <Form.Select
+                    fluid
+                    control={Dropdown}
+                    id="dropdown-users"
+                    label="User to Update"
+                    placeholder="Users"
+                    scrolling
+                    options={this.getUserOptions(this.state.userEmails)}
+                    name="emailNew"
+                    onChange={this.handleDropdownChange}
+                  ></Form.Select>
+                   <Form.Input
+                    value={this.state.usernameNew}
+                    onChange={this.handleInputChange}
+                    name="usernameNew"
+                    fluid
+                    label="New Username"
+                    placeholder="New Username"
+                    type="text"
+                  />
+                  <Form.Input
+                    value={this.state.roleNew}
+                    onChange={this.handleInputChange}
+                    name="roleNew"
+                    fluid
+                    label="New Role"
+                    placeholder="User or Admin"
+                    type="text"
+                  />
+
+                  <Button
+                    color="teal"
+                    fluid
+                    size="small"
+                    onClick={this.updateUser}
+                  >
+                    Update
+                  </Button>
+                  <Button
+                    color="teal"
+                    fluid
+                    size="small"
+                    onClick={this.deleteUser}
+                  >
+                    Delete
+                  </Button>
+                </Segment>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </div>
+        {/* <Button as={Link} to="/adminuser">Go to User Admin</Button> */}
       </div>
     );
   }

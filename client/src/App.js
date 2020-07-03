@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import Signup from "./pages/SignUp/Signup";
 import StartWorkout from "./pages/StartWorkout/StartWorkout";
 import Admin from "./pages/Admin/Admin";
-import AdminUser from "./pages/Admin/AdminUser";
+// import AdminUser from "./pages/Admin/AdminUser";
 import Rewards from "./pages/Rewards/Rewards";
 import Habits from "./pages/Habits/Habits";
 import Random from "./pages/Random/Random";
@@ -119,7 +119,7 @@ class App extends Component {
                 <Route exact path="/habits" component={Habits} />
                 <Route exact path="/random" component={Random}/>
                 <Route exact path="/admin" component={Admin} />
-                <Route exact path="/adminuser" component={AdminUser} />
+                {/* <Route exact path="/adminuser" component={AdminUser} /> */}
                 <Route path="/" component={Home} />
               </Switch>
             </Router>
