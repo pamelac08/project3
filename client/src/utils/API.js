@@ -10,8 +10,14 @@ export default {
   getOneMovement: function (id) {
     return axios.get("/api/coach/" + id);
   },
-  updateMovement: function (id, updateObject) {
-    return axios.put("http://localhost:3001/api/coach/" + id, updateObject);
+  updateMovementEquipment: function (id, updateObject) {
+    return axios.put("http://localhost:3001/api/coach/equipment/" + id, updateObject);
+  },
+  updateMovementFocus: function (id, updateObject) {
+    return axios.put("http://localhost:3001/api/coach/focus/" + id, updateObject);
+  },
+  updateMovementScaled: function (id, updateObject) {
+    return axios.put("http://localhost:3001/api/coach/scaled/" + id, updateObject);
   },
   deleteMovement: function (id) {
     return axios.delete("http://localhost:3001/api/coach/" + id);
@@ -25,7 +31,7 @@ export default {
   getOneHabit: function (id) {
     return axios.get("http://localhost:3001/api/coach/habits/" + id);
   },
-  updateHabitTracker: function (id, updateObject) {
+  incrementHabitCounter: function (id, updateObject) {
     return axios.put(
       "http://localhost:3001/api/coach/habits/" + id,
       updateObject

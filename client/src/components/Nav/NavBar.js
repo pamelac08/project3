@@ -1,83 +1,118 @@
 import React, { Component } from "react";
 import { Button, Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 export default class nav extends Component {
-  state = {};
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeItem: ""
+    };
+  }
+  
 
   // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state;
+    // const { activeItem } = this.state;
 
     return (
       <Menu inverted>
         <Menu.Item
-          name="Home"
-          active={activeItem === "Home"}
+          // name="Home"
+          // active={activeItem === "Home"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/" secondary>
+          <Button 
+            name="Home"
+            // active={activeItem === "Home"}
+            // active={this.props.active}
+            // onClick={this.props.activeItem}
+            onClick={this.handleItemClick}
+            as={Link} 
+            to="/" 
+            secondary>
             Home
           </Button>
         </Menu.Item>
 
         <Menu.Item
-          name="Start Workout"
-          active={activeItem === "Start Workout"}
+          // name="Start Workout"
+          // active={activeItem === "Start Workout"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/workout" secondary>
+          <Button 
+            name="Start Workout"
+            // active={activeItem === "Start Workout"}
+            // active={this.props.active}
+            onClick={this.handleItemClick}
+            as={Link} to="/workout" secondary>
             Start Workout
           </Button>
         </Menu.Item>
 
         <Menu.Item
-          name="Rewards Tracker"
-          active={activeItem === "Rewards Tracker"}
+          // name="Rewards Tracker"
+          // active={activeItem === "Rewards Tracker"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/rewards" secondary>
+          <Button 
+            name="Rewards Tracker"
+            // active={activeItem === "Rewards Tracker"}
+            onClick={this.handleItemClick}
+            as={Link} to="/rewards" secondary>
             Rewards Tracker
           </Button>
         </Menu.Item>
 
         <Menu.Item
-          name="Random Goal OTD"
-          active={activeItem === "Random Goal OTD"}
+          // name="Random Goal OTD"
+          // active={activeItem === "Random Goal OTD"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/random" secondary>Random Goal OTD</Button>
+          <Button 
+            name="Random Goal OTD"
+            // active={activeItem === "Random Goal OTD"}
+            onClick={this.handleItemClick}
+            as={Link} to="/random" secondary>
+            Random Goal OTD</Button>
         </Menu.Item>
 
         <Menu.Item
-          name="Admin Menu"
-          active={activeItem === "Admin Menu"}
+          // name="Admin Menu"
+          // active={activeItem === "Admin Menu"}
           // onClick={this.handleItemClick}
         >
-          <Button as={Link} to="/admin" secondary>
+          <Button 
+            name="Admin Menu"
+            // active={activeItem === "Admin Menu"}
+            onClick={this.handleItemClick}
+            as={Link} to="/admin" secondary>
             Admin Menu
           </Button>
         </Menu.Item>
 
-        {/* <Menu.Menu position='right'>
-                    <Menu.Item
+        <Menu.Menu position='right'>
+                    {/* <Menu.Item
                         name='Login'
                         active={activeItem === 'Login'}
                         // onClick={this.handleItemClick}
                     >
                     <Button as={Link} to="/login" secondary>Log In</Button>
 
-                    </Menu.Item>
+                    </Menu.Item> */}
 
                     <Menu.Item
-                        name='Sign Up'
-                        active={activeItem === 'Sign Up'}
+                        name="Logout"
+                        // active={activeItem === 'Logout'}
                         // onClick={this.handleItemClick}
                     >
-                    <Button as={Link} to="/signup" secondary>Sign Up</Button>
+                    <Button onClick={this.props.logout} secondary>Logout</Button>
                     </Menu.Item>
-                </Menu.Menu> */}
+                </Menu.Menu>
       </Menu>
     );
   }

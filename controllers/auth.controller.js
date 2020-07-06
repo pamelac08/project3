@@ -15,6 +15,7 @@ exports.signup = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
+    role: req.body.role
   });
 
   db.User.create(user).then((err, user) => {
@@ -111,6 +112,7 @@ exports.signin = (req, res) => {
         email: user.email,
         roles: authorities,
         accessToken: token,
+        role: user.role
       });
     });
 };

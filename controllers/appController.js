@@ -17,10 +17,28 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  updateMovement: function (req, res) {
-    db.Movement.findOneAndUpdate(
+  updateMovementEquipment: function (req, res) {
+    db.Movement.updateOne(
       { _id: req.params.id },
-      { equipment: req.body.equipment },
+      {$set: { "equipment": req.body.equipment}},
+      { saved: true }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  updateMovementFocus: function (req, res) {
+    db.Movement.updateOne(
+      { _id: req.params.id },
+      {$set: { "focus": req.body.focus}},
+      { saved: true }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  updateMovementScaled: function (req, res) {
+    db.Movement.updateOne(
+      { _id: req.params.id },
+      { "scaled": req.body.scaled},
       { saved: true }
     )
       .then((dbModel) => res.json(dbModel))
@@ -49,8 +67,8 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  updateHabit: function (req, res) {
-    db.Habit.findOneAndUpdate({ _id: req.params.id }, { saved: true })
+  updateHabitCounter: function (req, res) {
+    db.Habit.findOneAndUpdate({ _id: req.params.id },{counter: req.body.counter}, { saved: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -65,5 +83,23 @@ module.exports = {
     db.User.find()
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-  }
+  },
+  updateUser: function (req, res) {
+    db.User.findOneAndUpdate(
+      { _id: req.params.id },
+      { 
+        // $set: {username: req.body.username},
+        $set: {role: req.body.role} 
+      },
+      { saved: true }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  removeUser: function (req, res) {
+    db.User.findById({ _id: req.params.id })
+      .then((dbModel) => dbModel.remove())
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };

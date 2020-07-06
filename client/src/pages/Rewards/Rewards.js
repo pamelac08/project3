@@ -6,9 +6,11 @@ import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
 
+import { userContext } from "../../userContext";
+
 class Rewards extends Component {
   state = {
-    habits: []
+    habits: [],
   };
 
   componentDidMount() {
@@ -24,7 +26,8 @@ class Rewards extends Component {
           interval: habit.interval,
           frequency: habit.frequency,
           reward: habit.reward,
-          id: habit._id
+          id: habit._id,
+          user: habit.user
         })
       );
 
@@ -37,44 +40,55 @@ class Rewards extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
-        <AppHeader />
-        <Container>
-          <Grid
-            columns="three"
-            textAlign="left"
-            style={{ height: "100vh" }}
-            verticalAlign="top"
-          >
-            <Grid.Row>
-              <Grid.Column></Grid.Column>
-              <Grid.Column>
-                <div>
-                  <Header as="h2" icon textAlign="center">
-                    <Icon name="heartbeat" size="massive" color="red" />
-                    <Header.Content>
-                      Enter a new habit to start earning rewards!
-                    </Header.Content>
-                  </Header>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+      <userContext.Consumer>
+        {({ user, logoutUser }) => {
+          return (
+            <div>
+              <NavBar onClick={logoutUser} />
+              <AppHeader />
+              <Container>
+                <Grid
+                  columns="three"
+                  textAlign="left"
+                  style={{ height: "100vh" }}
+                  verticalAlign="top"
                 >
-                  <Button as={Link} to="/habits" color="teal" size="massive">
-                    Get Started
-                  </Button>
-                </div>
-              </Grid.Column>
-              <Grid.Column></Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </div>
+                  <Grid.Row>
+                    <Grid.Column></Grid.Column>
+                    <Grid.Column>
+                      <div>
+                        <Header as="h2" icon textAlign="center">
+                          <Icon name="heartbeat" size="massive" color="red" />
+                          <Header.Content>
+                            Enter a new habit to start earning rewards!
+                          </Header.Content>
+                        </Header>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Button
+                          as={Link}
+                          to="/habits"
+                          color="teal"
+                          size="massive"
+                        >
+                          Get Started
+                        </Button>
+                      </div>
+                    </Grid.Column>
+                    <Grid.Column></Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Container>
+            </div>
+          );
+        }}
+      </userContext.Consumer>
     );
   }
 }

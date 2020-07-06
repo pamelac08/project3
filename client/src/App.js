@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import {Button,Form,Grid,Header,Message,Segment,} from "semantic-ui-react";
 
 import Home from "./pages/Home/Home";
 import Signup from "./pages/SignUp/Signup";
 import StartWorkout from "./pages/StartWorkout/StartWorkout";
 import Admin from "./pages/Admin/Admin";
-// import AdminUser from "./pages/Admin/AdminUser";
 import Rewards from "./pages/Rewards/Rewards";
 import Habits from "./pages/Habits/Habits";
 import Random from "./pages/Random/Random";
@@ -30,7 +29,7 @@ class App extends Component {
 
   componentDidMount() {
     this.isUserAuthenticated();
-  }
+  };
 
   isUserAuthenticated() {
     const user = JSON.parse(localStorage.getItem("user")) || {};
@@ -39,12 +38,12 @@ class App extends Component {
         authenticated: true,
         user,
       });
-    }
-  }
+    };
+  };
 
   saveUser(user) {
     localStorage.setItem("user", JSON.stringify(user));
-  }
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -85,14 +84,27 @@ class App extends Component {
   signup = (event) => {
     event.preventDefault();
     this.setState({ signup: true });
+    setTimeout(() => {
+      console.log("set timeout")
+      return <Redirect to="/signup"/>
+    }, 3000);
   };
 
   logout = this.logout.bind(this);
-
   logout() {
     this.setState({ user: {} });
     localStorage.removeItem("user");
+    return <Redirect to="/" />
   }
+
+  // activeItem = this.activeItem.bind(this);
+  // activeItem(activeNavItem) {
+  //   // event.preventDefault();
+  //   console.log("app page, activeNavItem: ", activeNavItem)
+  //   this.setState({
+  //     activeNavItem: activeNavItem
+  //   });
+  // };
 
   render() {
     if (this.state.signup) {
@@ -106,25 +118,26 @@ class App extends Component {
       const value = {
         user: this.state.user,
         logoutUser: this.logout,
+        setActiveItem: this.activeItem,
+        // activeNavItem: this.state.activeNavItem
       };
 
       return (
         <userContext.Provider value={value}>
-          <div className="App">
-            <Router>
-              <Switch>
-                <Route exact path="/workout" component={StartWorkout} />
-                <Route exact path="/create-workout" component={CreateWorkout} />
-                <Route exact path="/rewards" component={Rewards} />
-                <Route exact path="/habits" component={Habits} />
-                <Route exact path="/random" component={Random}/>
-                <Route exact path="/admin" component={Admin} />
-                {/* <Route exact path="/adminuser" component={AdminUser} /> */}
-                <Route path="/" component={Home} />
-              </Switch>
-            </Router>
-            <Footer/>
-          </div>
+                  <div className="App">
+                    <Router>
+                      <Switch>
+                        <Route exact path="/workout" component={StartWorkout} />
+                        <Route exact path="/create-workout" component={CreateWorkout} />
+                        <Route exact path="/rewards" component={Rewards} />
+                        <Route exact path="/habits" component={Habits} />
+                        <Route exact path="/random" component={Random}/>
+                        <Route exact path="/admin" component={Admin} />
+                        <Route path="/" component={Home} />
+                      </Switch>
+                    </Router>
+                    <Footer/>
+                  </div>
         </userContext.Provider>
       );
     } else {
@@ -138,7 +151,7 @@ class App extends Component {
               verticalAlign="top"
             >
               <Grid.Column style={{ maxWidth: 500 }}>
-                <Header as="h2" color="olive" textAlign="center">
+                <Header as="h2" color="teal" textAlign="center">
                   Log-in to your account
                 </Header>
                 <Form size="large">
@@ -164,7 +177,7 @@ class App extends Component {
                     />
 
                     <Button
-                      color="olive"
+                      color="teal"
                       fluid
                       size="large"
                       onClick={this.handleSubmitForm}

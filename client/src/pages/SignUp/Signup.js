@@ -10,6 +10,7 @@ class Signup extends Component {
     email: "",
     password: "",
     redirect: false,
+    role: "user"
   };
 
   handleInputChange = (event) => {
@@ -26,6 +27,7 @@ class Signup extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
+      role: this.state.role
     })
       .then((res) => {
         this.setState({

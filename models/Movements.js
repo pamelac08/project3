@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const movementSchema = new Schema({
   name: { type: String, required: true },
-  equipment: { type: String, default: null },
-  focus: { type: String, required: true },
+  equipment: { type: String},
+  focus: { type: String},
   scaled: { type: String },
 });
 
