@@ -4,39 +4,9 @@ import { Link } from "react-router-dom";
 import "./reward.css";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
-import API from "../../utils/API";
-
 import { userContext } from "../../userContext";
 
 class Rewards extends Component {
-  state = {
-    habits: [],
-  };
-
-  componentDidMount() {
-    API.getAllHabits().then((res) => {
-      console.log("res.data all habits", res.data);
-
-      let allHabits = res.data;
-      let habitArray = [];
-
-      allHabits.map((habit) =>
-        habitArray.push({
-          name: habit.name,
-          interval: habit.interval,
-          frequency: habit.frequency,
-          reward: habit.reward,
-          id: habit._id,
-          user: habit.user
-        })
-      );
-
-      console.log("habitArray object array: ", habitArray);
-      // this.setState({
-      //   habits: habitArray,
-      // });
-    });
-  }
 
   render() {
     return (
@@ -44,7 +14,7 @@ class Rewards extends Component {
         {({ user, logoutUser }) => {
           return (
             <div>
-              <NavBar onClick={logoutUser} />
+              <NavBar onClick={logoutUser} active="Rewards Tracker" />
               <AppHeader />
               <Container>
                 <Grid

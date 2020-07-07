@@ -7,7 +7,6 @@ import Moment from "react-moment";
 import moment from "moment";
 import cheerio from "cheerio";
 import AppHeader from "../../components/Header/header";
-
 import { userContext } from "../../userContext";
 
 class StartWorkout extends Component {
@@ -21,31 +20,24 @@ class StartWorkout extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    // console.log("this.state.date: ", JSON.stringify(this.state.date));
     let newDate = moment().format("YYMMDD");
-    // console.log("newdate: ", newDate);
     this.getWOD(newDate);
-  }
+  };
 
   getWOD = (date) => {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://www.crossfit.com/";
-    //   console.log("url: " + proxyurl + url + date);
 
     fetch(proxyurl + url + date)
       .then((response) => response.text())
       .then((response) => {
-        // console.log("contents: ", response)
         let $ = cheerio.load(response);
-        // console.log("$ scrape response: ", $);
-
         let workout = [];
 
         $("._1kOqu24U9_kCLpSukpmYDZ div p").each((i, element) => {
           let result = {};
 
           result = $(element).text();
-          // console.log("result: " + i + " " + JSON.stringify(result))
           workout.push(result);
         });
 
@@ -53,9 +45,7 @@ class StartWorkout extends Component {
         console.log("lastindex: ", lastIndex);
 
         let wodFilter = workout.filter((workout, i) => i !== lastIndex)
-        console.log("wodFilter: ", wodFilter);
 
-        // console.log("workout array, scrape response: ", workout);
         this.setState({
           wod: wodFilter,
           isLoading: false,
@@ -65,7 +55,7 @@ class StartWorkout extends Component {
 
   componentWillUnmount() {
     this._isMounted = false;
-  }
+  };
 
   render() {
     return (
@@ -73,7 +63,7 @@ class StartWorkout extends Component {
         {({ user, logoutUser }) => {
           return (
             <div>
-              <NavBar logout={logoutUser} />
+              <NavBar logout={logoutUser} active="Start Workout" />
               <AppHeader />
               <Grid
                 textAlign="center"

@@ -11,27 +11,21 @@ export default class nav extends Component {
     this.state = {
       activeItem: ""
     };
-  }
+  };
   
-
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  componentDidMount() {
+    this.setState({activeItem: this.props.active});
+  };
 
   render() {
-    // const { activeItem } = this.state;
+    const { activeItem } = this.state;
 
     return (
       <Menu inverted>
-        <Menu.Item
-          // name="Home"
-          // active={activeItem === "Home"}
-          // onClick={this.handleItemClick}
-        >
+        <Menu.Item>
           <Button 
             name="Home"
-            // active={activeItem === "Home"}
-            // active={this.props.active}
-            // onClick={this.props.activeItem}
-            onClick={this.handleItemClick}
+            active={activeItem === "Home"}
             as={Link} 
             to="/" 
             secondary>
@@ -39,80 +33,55 @@ export default class nav extends Component {
           </Button>
         </Menu.Item>
 
-        <Menu.Item
-          // name="Start Workout"
-          // active={activeItem === "Start Workout"}
-          // onClick={this.handleItemClick}
-        >
+        <Menu.Item>
           <Button 
             name="Start Workout"
-            // active={activeItem === "Start Workout"}
-            // active={this.props.active}
-            onClick={this.handleItemClick}
+            active={activeItem === "Start Workout"}
             as={Link} to="/workout" secondary>
             Start Workout
           </Button>
         </Menu.Item>
 
-        <Menu.Item
-          // name="Rewards Tracker"
-          // active={activeItem === "Rewards Tracker"}
-          // onClick={this.handleItemClick}
-        >
+        <Menu.Item>
           <Button 
             name="Rewards Tracker"
-            // active={activeItem === "Rewards Tracker"}
-            onClick={this.handleItemClick}
+            active={activeItem === "Rewards Tracker"}
             as={Link} to="/rewards" secondary>
             Rewards Tracker
           </Button>
         </Menu.Item>
 
-        <Menu.Item
-          // name="Random Goal OTD"
-          // active={activeItem === "Random Goal OTD"}
-          // onClick={this.handleItemClick}
-        >
+        <Menu.Item>
           <Button 
             name="Random Goal OTD"
-            // active={activeItem === "Random Goal OTD"}
-            onClick={this.handleItemClick}
+            active={activeItem === "Random Goal OTD"}
             as={Link} to="/random" secondary>
             Random Goal OTD</Button>
         </Menu.Item>
 
-        <Menu.Item
-          // name="Admin Menu"
-          // active={activeItem === "Admin Menu"}
-          // onClick={this.handleItemClick}
-        >
+        <Menu.Item>
           <Button 
             name="Admin Menu"
-            // active={activeItem === "Admin Menu"}
-            onClick={this.handleItemClick}
+            active={activeItem === "Admin Menu"}
             as={Link} to="/admin" secondary>
             Admin Menu
           </Button>
         </Menu.Item>
 
         <Menu.Menu position='right'>
-                    {/* <Menu.Item
-                        name='Login'
-                        active={activeItem === 'Login'}
-                        // onClick={this.handleItemClick}
-                    >
-                    <Button as={Link} to="/login" secondary>Log In</Button>
+          {/* <Menu.Item
+              name='Login'
+              active={activeItem === 'Login'}
+              // onClick={this.handleItemClick}
+          >
+          <Button as={Link} to="/login" secondary>Log In</Button>
 
-                    </Menu.Item> */}
+          </Menu.Item> */}
 
-                    <Menu.Item
-                        name="Logout"
-                        // active={activeItem === 'Logout'}
-                        // onClick={this.handleItemClick}
-                    >
-                    <Button onClick={this.props.logout} secondary>Logout</Button>
-                    </Menu.Item>
-                </Menu.Menu>
+          <Menu.Item>
+          <Button onClick={this.props.logout} secondary>Logout</Button>
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     );
   }

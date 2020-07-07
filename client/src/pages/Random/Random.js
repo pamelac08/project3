@@ -7,7 +7,6 @@ import { userContext } from "../../userContext";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-
 class Random extends Component {
   
   constructor(props) {
@@ -34,39 +33,28 @@ class Random extends Component {
 
   getStoredDateAndGoal() {
     const todayDate = moment().format("YYYYMMDD");
-      // console.log("in getStoredData, todayDate: ", todayDate)
-
     const date = JSON.parse(localStorage.getItem("date")) || "";
-      // console.log("in getStoredData, date: ", date)
-
     if (date === todayDate) {
       const storedGoal = JSON.parse(localStorage.getItem("goal"));
-        // console.log("in getStoredData, Stored Goal: ", storedGoal)
       this.setState({
         goal: storedGoal
-      })
+      });
     } else {
       this.randomGoal(todayDate);
     };
   };
 
   randomGoal(today) {
-      // console.log("today in randomGoal: ", today);
     let goal = this.goals[Math.floor(Math.random() * this.goals.length)];
-      // console.log("goal in randomGoal: ", goal);
     this.setState({ 
       goal: goal
     });
     localStorage.setItem("goal", JSON.stringify(goal));
     localStorage.setItem("date", JSON.stringify(today));
-  }
-
-  
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
-
-    // console.log("this.state.goal: ", this.state.goal);
 
     API.saveHabit({
       name: this.state.goal,
@@ -87,7 +75,7 @@ class Random extends Component {
         {({ user, logoutUser }) => {
           return (
             <div>
-              <Navbar logout={logoutUser} />
+              <Navbar logout={logoutUser} active="Random Goal OTD"/>
               <AppHeader />
               <Grid
                 columns="three"
@@ -132,6 +120,6 @@ class Random extends Component {
         }}
       </userContext.Consumer>
     );
-  }
-}
+  };
+};
 export default Random;

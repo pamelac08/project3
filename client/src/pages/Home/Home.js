@@ -10,24 +10,20 @@ import { userContext } from "../../userContext";
 class Home extends Component {
   constructor(props) {
     super(props);
- 
     this.state = {
-      
     };
-  }
+  };
 
 
   render() {
-
     return (
       <userContext.Consumer>
-
         {({user, logoutUser}) => {
           return (
             <div className="Home">
               <NavBar 
                 logout={logoutUser}
-                // activeItem={setActiveItem}
+                active="Home"
                 />
               <AppHeader/>
               <div id="buttons">
@@ -41,8 +37,8 @@ class Home extends Component {
           )
         }}
       </userContext.Consumer>  
-    )  
-  }
-}
+    );  
+  };
+};
 
 export default Home;

@@ -1,19 +1,11 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Segment,
-  Dropdown,
-} from "semantic-ui-react";
+import {Button,Form,Grid,Header,Segment,Dropdown,} from "semantic-ui-react";
 import API from "../../utils/API";
 import LOGINAPI from "../../utils/LoginAPI";
 import "./style.css";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
-// import { Link } from "react-router-dom";
 import { userContext } from "../../userContext";
 import { Redirect } from "react-router";
 
@@ -48,8 +40,6 @@ class Admin extends Component {
             movementid: movement._id,
           })
         );
-
-        // console.log("movementname object array: ", movementName);
         this.setState({
           movementNames: movementName,
         });
@@ -58,10 +48,8 @@ class Admin extends Component {
   };
 
   componentDidMount() {
-    // console.log("component did mount working");
     this.getMovements();
     this.getUsers();
-    // console.log("this.state.movementNames: ", this.state.movementNames);
   };
 
   getOptions = (array) =>
@@ -75,15 +63,12 @@ class Admin extends Component {
     event.preventDefault();
 
     if (this.state.equipmentNew !== "") {
-      console.log("equipmentNew if not empty");
       this.updateMovementEquipment();
     }
     if (this.state.focusNew !== "") {
-      console.log("testing focus");
       this.updateMovementFocus();
     }
     if (this.state.scaledNew !== "") {
-      console.log("testing scaled");
       this.updateMovementScaled();
     }
     this.resetState();
@@ -179,7 +164,6 @@ class Admin extends Component {
   getUsers() {
     LOGINAPI.getAllUsers()
       .then((res) => {
-        console.log("all users res: ", res.data);
         let allUsers = res.data;
         let userEmail = [];
 
@@ -237,12 +221,11 @@ class Admin extends Component {
     return (
       <userContext.Consumer>
         {({ user, logoutUser }) => {
-          // console.log("inside render user.role: ", user.role);
 
           if (user.role === "admin") {
             return (
               <div>
-                <NavBar logout={logoutUser} />
+                <NavBar logout={logoutUser} active="Admin Menu" />
                 <AppHeader />
                 <div id="insert-div">
                   <Grid

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Grid, Header, Button, Form, Segment } from "semantic-ui-react";
-import { Redirect } from "react-router-dom";
 import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
@@ -13,7 +12,6 @@ class Habits extends Component {
     super(props);
  
     this.state = {
-      // reload: false,
       habitName: "",
       habitInterval: "",
       habitFrequency: "",
@@ -24,10 +22,9 @@ class Habits extends Component {
     };
   };
 
-
   componentDidMount() {
     API.getAllHabits().then((res) => {
-      // console.log("res.data all habits", res.data); s
+      // console.log("res.data all habits", res.data);
       let allHabits = res.data;
       let habitArray = [];
 
@@ -48,7 +45,6 @@ class Habits extends Component {
       });
     });
   };
-
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -73,22 +69,17 @@ class Habits extends Component {
           habitInterval: "",
           habitFrequency: "",
           reward: "",
-          redirect: true,
         });
+        this.refreshPage();
       })
       .catch((err) => console.log(err));
   };
 
   checkForCompletion = (event) => {
     event.preventDefault();
-    // console.log("testing inside checkforcompletion");
-    // console.log("checkforcompletion- data: ", event.target.dataset.freq)
-    let frequency = parseInt(event.target.dataset.freq)
-    // console.log("frequency", frequency)
-
+    let frequency = parseInt(event.target.dataset.freq);
     let nextIncrement = parseInt(event.target.name);
     let nextIncrementNum = nextIncrement+=1;
-    // console.log("nextIncrementNum: ", nextIncrementNum)
 
     if (frequency === nextIncrementNum) {
       API.incrementHabitCounter(event.target.value, {
@@ -107,11 +98,8 @@ class Habits extends Component {
 
   incrementCounter = (event) => {
     event.preventDefault();
-    // console.log("testing inside incrementCounter");
-    // console.log("incrementCounter - event.target.name: ", event.target.name)
     let nextIncrement = parseInt(event.target.name);
     let nextIncrementNum = nextIncrement+=1;
-    // console.log("nextIncrementNum: ", nextIncrementNum)
 
     API.incrementHabitCounter(event.target.value, {
         counter: nextIncrementNum
@@ -125,7 +113,7 @@ class Habits extends Component {
 
   refreshPage() {
     window.location.reload(false);
-  }
+  };
 
   deleteHabit = (event) => {
     event.preventDefault();
@@ -140,18 +128,12 @@ class Habits extends Component {
   
 
   render() {
-    const { redirect } = this.state;
-
-    if (redirect) {
-      return <Redirect to="/rewards" />;
-    }
-
     return (
       <userContext.Consumer>
         {({ user, logoutUser }) => {
           return (
             <div>
-              <NavBar logout={logoutUser} />
+              <NavBar logout={logoutUser} active="Rewards Tracker" />
               <AppHeader />
 
               <div className="allCards">
@@ -164,7 +146,6 @@ class Habits extends Component {
                   interval={habit.interval}
                   frequency={habit.frequency}
                   counter={habit.counter}
-                  // increment={this.incrementCounter}
                   checkComplete={this.checkForCompletion}
                   delete={this.deleteHabit}
                   value={habit.id}

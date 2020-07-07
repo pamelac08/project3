@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect, Link} from "react-router-dom";
 import {Button,Form,Grid,Header,Message,Segment,} from "semantic-ui-react";
 
 import Home from "./pages/Home/Home";
@@ -84,10 +84,6 @@ class App extends Component {
   signup = (event) => {
     event.preventDefault();
     this.setState({ signup: true });
-    setTimeout(() => {
-      console.log("set timeout")
-      return <Redirect to="/signup"/>
-    }, 3000);
   };
 
   logout = this.logout.bind(this);
@@ -95,16 +91,8 @@ class App extends Component {
     this.setState({ user: {} });
     localStorage.removeItem("user");
     return <Redirect to="/" />
-  }
+  };
 
-  // activeItem = this.activeItem.bind(this);
-  // activeItem(activeNavItem) {
-  //   // event.preventDefault();
-  //   console.log("app page, activeNavItem: ", activeNavItem)
-  //   this.setState({
-  //     activeNavItem: activeNavItem
-  //   });
-  // };
 
   render() {
     if (this.state.signup) {
@@ -118,8 +106,6 @@ class App extends Component {
       const value = {
         user: this.state.user,
         logoutUser: this.logout,
-        setActiveItem: this.activeItem,
-        // activeNavItem: this.state.activeNavItem
       };
 
       return (
@@ -143,6 +129,7 @@ class App extends Component {
     } else {
       return (
         <div>
+          <Router>
           <AppHeader />
           <div>
             <Grid
@@ -187,12 +174,13 @@ class App extends Component {
                   </Segment>
                 </Form>
                 <Message>
-                  New to us? <Button onClick={this.signup}>Sign Up</Button>
+                  New to us? <Button onClick={this.signup} as={Link} to="/signup">Sign Up</Button>
                 </Message>
               </Grid.Column>
             </Grid>
           </div>
           <Footer/>
+          </Router>
         </div>
       );
     }

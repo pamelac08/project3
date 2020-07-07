@@ -243,7 +243,7 @@ class CreateWorkout extends Component {
         {({ user, logoutUser }) => {
           return (
             <div>
-              <NavBar logout={logoutUser} />
+              <NavBar logout={logoutUser} active="Start Workout" />
               <AppHeader />
               <WOButton></WOButton>
               <WOCDropDown
