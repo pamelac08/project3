@@ -15,9 +15,10 @@ class Random extends Component {
     this.state = {
       goal: "",
       interval: "todayonly",
-      frequency: 1
+      frequency: 1,
+      habits: []
     };
-  }
+  };
   
   goals = [
     "Drink 64 oz of Water",
@@ -29,6 +30,30 @@ class Random extends Component {
 
   componentDidMount() {
     this.getStoredDateAndGoal();
+    this.getHabits();
+  };
+
+  getHabits() {
+    API.getAllHabits().then((res) => {
+      let allHabits = res.data;
+      let habitArray = [];
+
+      allHabits.map((habit) =>
+        habitArray.push({
+          name: habit.name,
+          interval: habit.interval,
+          // frequency: habit.frequency,
+          // reward: habit.reward,
+          // id: habit._id,
+          user: habit.user,
+          // counter: habit.counter
+        })
+      );
+      console.log("habitArray object array, in didMount random page: ", habitArray);
+      this.setState({
+        habits: habitArray,
+      });
+    });
   };
 
   getStoredDateAndGoal() {
@@ -55,6 +80,17 @@ class Random extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    let habitsArray = this.state.habits;
+
+    for (let index = 0; index < habitsArray.length; index++) {
+      const element = habitsArray[index];
+
+      if (this.state.goal === element.name && this.state.interval === element.interval && event.target.value === element.user) {
+        alert("Already added to tracker, you're all set!");
+        return;
+      };
+    };
 
     API.saveHabit({
       name: this.state.goal,

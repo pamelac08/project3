@@ -23,8 +23,11 @@ class Habits extends Component {
   };
 
   componentDidMount() {
+    this.getHabits();
+  };
+
+  getHabits() {
     API.getAllHabits().then((res) => {
-      // console.log("res.data all habits", res.data);
       let allHabits = res.data;
       let habitArray = [];
 
