@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect, Link} from "react-router-dom";
-import {Button,Form,Grid,Header,Message,Segment,} from "semantic-ui-react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
+import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Signup from "./pages/SignUp/Signup";
 import StartWorkout from "./pages/StartWorkout/StartWorkout";
@@ -13,17 +13,13 @@ import CreateWorkout from "./pages/CreateWorkout/CreateWorkout";
 import "./App.css";
 
 import Footer from "./components/Footer/Footer";
-import AppHeader from "./components/Header/header";
 
 import { userContext } from "./userContext";
 import LOGINAPI from "./utils/LoginAPI";
 
 class App extends Component {
   state = {
-    email: "",
-    password: "",
     user: {},
-    signup: false,
     authenticated: false,
   };
 
@@ -45,19 +41,13 @@ class App extends Component {
     localStorage.setItem("user", JSON.stringify(user));
   };
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmitForm = (event) => {
+  handleSubmitForm = this.handleSubmitForm.bind(this);
+  handleSubmitForm(event) {
     event.preventDefault();
 
     LOGINAPI.loginUser({
-      email: this.state.email,
-      password: this.state.password,
+      email: event.target.value,
+      password: event.target.name,
     })
       .then((res) => {
         console.log("res - login: ", res.data);
@@ -65,8 +55,6 @@ class App extends Component {
         this.saveUser(res.data);
 
         this.setState({
-          email: "",
-          password: "",
           user: res.data,
           authenticated: true,
         });
@@ -79,11 +67,6 @@ class App extends Component {
       if (obj.hasOwnProperty(key)) return false;
     }
     return true;
-  }
-
-  signup = (event) => {
-    event.preventDefault();
-    this.setState({ signup: true });
   };
 
   logout = this.logout.bind(this);
@@ -95,13 +78,7 @@ class App extends Component {
 
 
   render() {
-    if (this.state.signup) {
-      return (
-        <Router>
-          <Route exact path="/signup" component={Signup} />
-        </Router>
-      );
-    }
+
     if (!this.isEmpty(this.state.user)) {
       const value = {
         user: this.state.user,
@@ -127,62 +104,22 @@ class App extends Component {
         </userContext.Provider>
       );
     } else {
+      const valueLogin = {
+        handleSubmitForm: this.handleSubmitForm,
+      };
       return (
-        <div>
-          <Router>
-          <AppHeader />
-          <div>
-            <Grid
-              textAlign="center"
-              style={{ height: "100vh" }}
-              verticalAlign="top"
-            >
-              <Grid.Column style={{ maxWidth: 500 }}>
-                <Header as="h2" color="teal" textAlign="center">
-                  Log-in to your account
-                </Header>
-                <Form size="large">
-                  <Segment stacked>
-                    <Form.Input
-                      fluid
-                      icon="user"
-                      iconPosition="left"
-                      placeholder="E-mail address"
-                      name="email"
-                      value={this.state.email}
-                      onChange={this.handleInputChange}
-                    />
-                    <Form.Input
-                      fluid
-                      icon="lock"
-                      iconPosition="left"
-                      placeholder="Password"
-                      type="password"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.handleInputChange}
-                    />
-
-                    <Button
-                      color="teal"
-                      fluid
-                      size="large"
-                      onClick={this.handleSubmitForm}
-                    >
-                      Login
-                    </Button>
-                  </Segment>
-                </Form>
-                <Message>
-                  New to us? <Button onClick={this.signup} as={Link} to="/signup">Sign Up</Button>
-                </Message>
-              </Grid.Column>
-            </Grid>
+        <userContext.Provider value={valueLogin}>
+          <div className="app">
+            <Router>
+              <Switch>
+                <Route exact path="/signup" component={Signup} />
+                <Route path="/" component={Login} />
+              </Switch>
+            </Router>
+            <Footer/>
           </div>
-          <Footer/>
-          </Router>
-        </div>
-      );
+        </userContext.Provider>
+      )
     }
   }
 }
