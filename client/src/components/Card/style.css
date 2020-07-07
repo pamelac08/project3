@@ -1,0 +1,7 @@
+.ui.card:first-child {
+    margin: 1em 0;
+}
+
+.ui.card {
+    margin: 1em 1em;
+}

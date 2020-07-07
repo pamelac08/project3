@@ -10,6 +10,7 @@ class Signup extends Component {
     email: "",
     password: "",
     redirect: false,
+    role: "user"
   };
 
   handleInputChange = (event) => {
@@ -26,22 +27,26 @@ class Signup extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
+      role: this.state.role
     })
       .then((res) => {
+        console.log("res - create user: ", res)
         this.setState({
           username: "",
           email: "",
           password: "",
           redirect: true,
-        });
-        if (this.state.redirect) {
-          return <Redirect to="/" />;
-        }
+        })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("err - create user: ", err));
   };
 
   render() {
+
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div>
         <AppHeader/>

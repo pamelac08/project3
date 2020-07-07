@@ -6,11 +6,12 @@ import NavBar from "../../components/Nav/NavBar";
 import AppHeader from "../../components/Header/header";
 import API from "../../utils/API";
 
-import {Message} from "semantic-ui-react";
+import { Message } from "semantic-ui-react";
 import "./style.css";
 
-class CreateWorkout extends Component {
+import { userContext } from "../../userContext";
 
+class CreateWorkout extends Component {
   state = {
     allMovements: [],
     areaFocus: "",
@@ -28,32 +29,42 @@ class CreateWorkout extends Component {
     repsTwo: "",
     repsThree: "",
     repsFour: "",
-    repsFive: ""
+    repsFive: "",
   };
 
   workoutType = ["amrap", "emom", "fortime"];
 
   amrap(areaFocus) {
-    let workoutTime = Math.floor(Math.random() * (20-12) + 12);
-    console.log("workoutTime: ", workoutTime);
+    let workoutTime = Math.floor(Math.random() * (20 - 12) + 12);
+    // console.log("workoutTime: ", workoutTime);
 
-    let workoutFilterbyFocus = this.state.allMovements.filter(movement => 
-      movement.focus === areaFocus || movement.focus === "cardio");
-    console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
+    let workoutFilterbyFocus = this.state.allMovements.filter(
+      (movement) => movement.focus === areaFocus || movement.focus === "cardio"
+    );
+    // console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
 
-    let movementOne = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementOne: ", movementOne);
-    let movementTwo = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementTwo: ", movementTwo);
-    let movementThree = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementThree: ", movementThree);
+    let movementOne =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementOne: ", movementOne);
+    let movementTwo =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementTwo: ", movementTwo);
+    let movementThree =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementThree: ", movementThree);
 
-    let repsOne = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsOne: ", repsOne);
-    let repsTwo = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsTwo: ", repsTwo);
-    let repsThree = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsThree: ", repsThree);
+    let repsOne = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsOne: ", repsOne);
+    let repsTwo = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsTwo: ", repsTwo);
+    let repsThree = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsThree: ", repsThree);
 
     this.setState({
       workoutTime: workoutTime,
@@ -62,31 +73,41 @@ class CreateWorkout extends Component {
       movementThree: movementThree.name,
       repsOne: repsOne,
       repsTwo: repsTwo,
-      repsThree: repsThree
-    })
-  };
+      repsThree: repsThree,
+    });
+  }
 
   emom(areaFocus) {
-    let workoutTime = Math.floor(Math.random() * (15-10) + 10);
-    console.log("workoutTime: ", workoutTime);
+    let workoutTime = Math.floor(Math.random() * (15 - 10) + 10);
+    // console.log("workoutTime: ", workoutTime);
 
-    let workoutFilterbyFocus = this.state.allMovements.filter(movement => 
-      movement.focus === areaFocus || movement.focus === "cardio");
-    console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
+    let workoutFilterbyFocus = this.state.allMovements.filter(
+      (movement) => movement.focus === areaFocus || movement.focus === "cardio"
+    );
+    // console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
 
-    let movementOne = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementOne: ", movementOne);
-    let movementTwo = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementTwo: ", movementTwo);
-    let movementThree = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementThree: ", movementThree);
+    let movementOne =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementOne: ", movementOne);
+    let movementTwo =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementTwo: ", movementTwo);
+    let movementThree =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementThree: ", movementThree);
 
-    let repsOne = Math.floor(Math.random() * (7-4) + 4);
-    console.log("repsOne: ", repsOne);
-    let repsTwo = Math.floor(Math.random() * (7-4) + 4);
-    console.log("repsTwo: ", repsTwo);
-    let repsThree = Math.floor(Math.random() * (7-4) + 4);
-    console.log("repsThree: ", repsThree);
+    let repsOne = Math.floor(Math.random() * (7 - 4) + 4);
+    // console.log("repsOne: ", repsOne);
+    let repsTwo = Math.floor(Math.random() * (7 - 4) + 4);
+    // console.log("repsTwo: ", repsTwo);
+    let repsThree = Math.floor(Math.random() * (7 - 4) + 4);
+    // console.log("repsThree: ", repsThree);
 
     this.setState({
       workoutTime: workoutTime,
@@ -95,39 +116,55 @@ class CreateWorkout extends Component {
       movementThree: movementThree.name,
       repsOne: repsOne,
       repsTwo: repsTwo,
-      repsThree: repsThree
-    })
-  };
+      repsThree: repsThree,
+    });
+  }
 
   fortime(areaFocus) {
     // let workoutTime = Math.floor(Math.random() * (20-12) + 12);
     // console.log("workoutTime: ", workoutTime);
 
-    let workoutFilterbyFocus = this.state.allMovements.filter(movement => 
-      movement.focus === areaFocus || movement.focus === "cardio");
-    console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
+    let workoutFilterbyFocus = this.state.allMovements.filter(
+      (movement) => movement.focus === areaFocus || movement.focus === "cardio"
+    );
+    // console.log("amrap workoutFilter Array: ", workoutFilterbyFocus);
 
-    let movementOne = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementOne: ", movementOne);
-    let movementTwo = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementTwo: ", movementTwo);
-    let movementThree = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementThree: ", movementThree);
-    let movementFour = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementThree: ", movementFour);
-    let movementFive = workoutFilterbyFocus[Math.floor(Math.random()*workoutFilterbyFocus.length)];
-    console.log("movementThree: ", movementFive);
+    let movementOne =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementOne: ", movementOne);
+    let movementTwo =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementTwo: ", movementTwo);
+    let movementThree =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementThree: ", movementThree);
+    let movementFour =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementThree: ", movementFour);
+    let movementFive =
+      workoutFilterbyFocus[
+        Math.floor(Math.random() * workoutFilterbyFocus.length)
+      ];
+    // console.log("movementThree: ", movementFive);
 
-    let repsOne = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsOne: ", repsOne);
-    let repsTwo = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsTwo: ", repsTwo);
-    let repsThree = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsThree: ", repsThree);
-    let repsFour = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsFour: ", repsFour);
-    let repsFive = Math.floor(Math.random() * (20-10) + 10);
-    console.log("repsFive: ", repsFive);
+    let repsOne = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsOne: ", repsOne);
+    let repsTwo = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsTwo: ", repsTwo);
+    let repsThree = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsThree: ", repsThree);
+    let repsFour = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsFour: ", repsFour);
+    let repsFive = Math.floor(Math.random() * (20 - 10) + 10);
+    // console.log("repsFive: ", repsFive);
 
     this.setState({
       // workoutTime: workoutTime,
@@ -140,19 +177,18 @@ class CreateWorkout extends Component {
       repsTwo: repsTwo,
       repsThree: repsThree,
       repsFour: repsFour,
-      repsFive: repsFive
-    })
-
-  };
-
+      repsFive: repsFive,
+    });
+  }
 
   generateWorkout(areaFocus) {
-
-    let workoutTypeRandom = this.workoutType[Math.floor(Math.random()*this.workoutType.length)];
+    let workoutTypeRandom = this.workoutType[
+      Math.floor(Math.random() * this.workoutType.length)
+    ];
     console.log("workoutTypeRandom: ", workoutTypeRandom);
 
     this.setState({
-      workoutType: workoutTypeRandom
+      workoutType: workoutTypeRandom,
     });
 
     switch (workoutTypeRandom) {
@@ -171,16 +207,14 @@ class CreateWorkout extends Component {
       default:
         console.log("default");
         this.amrap(areaFocus);
-    } 
-  };
-
+    }
+  }
 
   componentDidMount() {
-    API.getAllMovements() 
-    .then((res) => {
-      console.log("get all movements, res.data: ", res.data)
+    API.getAllMovements().then((res) => {
+      console.log("get all movements, res.data: ", res.data);
       this.setState({
-        allMovements: res.data
+        allMovements: res.data,
       });
     });
   };
@@ -196,97 +230,94 @@ class CreateWorkout extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-  //  console.log("event.target", event.target);
-   console.log("areaFocus: ", this.state.areaFocus);
+    //  console.log("event.target", event.target);
+    console.log("areaFocus: ", this.state.areaFocus);
 
-  //  function for generating workout, pass state info of input
+    //  function for generating workout, pass state info of input
     this.generateWorkout(this.state.areaFocus);
-
   };
-
-  
-
-
-
 
   render() {
     return (
-      <div>
-        <NavBar />
-        <AppHeader/>
-        <WOButton></WOButton>
-        <WOCDropDown
-          name={"areaFocus"}
-          onChange={this.handleDropdownChange}
-          fieldName={"Area of Focus"}
-          optionData={[
-            {
-              key: "1",
-              text: "Upper Body",
-              value: "upper",
-            },
-            {
-              key: "2",
-              text: "Full Body",
-              value: "full",
-            },
-            {
-              key: "3",
-              text: "Lower Body",
-              value: "lower",
-            },
-          ]}
-        />
-        <WOCDropDown
-          name="cardioEquip"
-          onChange={this.handleDropdownChange}
-          fieldName={"Cardio Equipment"}
-          optionData={[
-            {
-              key: "1",
-              text: "Box",
-              value: "Box",
-            },
-            {
-              key: "2",
-              text: "Jump Rope",
-              value: "Jump Rope",
-            },
-            {
-              key: "3",
-              text: "Rowing Machine",
-              value: "Rower",
-            },
-          ]}
-        />
-        <WOCDropDown
-          name="weightEquip"
-          onChange={this.handleDropdownChange}
-          fieldName={"Weight Equipment"}
-          optionData={[
-            {
-              key: "1",
-              text: "Barbell",
-              value: "Barbell",
-            },
-            {
-              key: "2",
-              text: "Dumbbell",
-              value: "Dumbbell",
-            },
-            {
-              key: "3",
-              text: "Kettlebell",
-              value: "Kettlebell",
-            },
-            {
-              key: "4",
-              text: "Medicine Ball",
-              value: "Medicine Ball",
-            },
-          ]}
-        />
-        {/* <WOCDropDown
+      <userContext.Consumer>
+        {({ user, logoutUser }) => {
+          return (
+            <div>
+              <NavBar logout={logoutUser} active="Start Workout" />
+              <AppHeader />
+              <WOButton></WOButton>
+              <WOCDropDown
+                name={"areaFocus"}
+                onChange={this.handleDropdownChange}
+                fieldName={"Area of Focus"}
+                optionData={[
+                  {
+                    key: "1",
+                    text: "Upper Body",
+                    value: "upper",
+                  },
+                  {
+                    key: "2",
+                    text: "Full Body",
+                    value: "full",
+                  },
+                  {
+                    key: "3",
+                    text: "Lower Body",
+                    value: "lower",
+                  },
+                ]}
+              />
+              <WOCDropDown
+                name="cardioEquip"
+                onChange={this.handleDropdownChange}
+                fieldName={"Cardio Equipment"}
+                optionData={[
+                  {
+                    key: "1",
+                    text: "Box",
+                    value: "Box",
+                  },
+                  {
+                    key: "2",
+                    text: "Jump Rope",
+                    value: "Jump Rope",
+                  },
+                  {
+                    key: "3",
+                    text: "Rowing Machine",
+                    value: "Rower",
+                  },
+                ]}
+              />
+              <WOCDropDown
+                name="weightEquip"
+                onChange={this.handleDropdownChange}
+                fieldName={"Weight Equipment"}
+                optionData={[
+                  {
+                    key: "1",
+                    text: "Barbell",
+                    value: "Barbell",
+                  },
+                  {
+                    key: "2",
+                    text: "Dumbbell",
+                    value: "Dumbbell",
+                  },
+                  {
+                    key: "3",
+                    text: "Kettlebell",
+                    value: "Kettlebell",
+                  },
+                  {
+                    key: "4",
+                    text: "Medicine Ball",
+                    value: "Medicine Ball",
+                  },
+                ]}
+              />
+              {/* <WOCDropDown
           name=""
           onChange={this.handleDropdownChange}
           fieldName={"Strength"}
@@ -308,38 +339,48 @@ class CreateWorkout extends Component {
             },
           ]}
         /> */}
-        <SubmitButton
-          onClick={this.handleSubmit}
-        ></SubmitButton>
+              <SubmitButton onClick={this.handleSubmit}></SubmitButton>
 
-        
-          {this.state.workoutType ? (
-           <Message>
-          Your Custom Workout for Today: <br></br>
-          <p>{this.state.workoutType}</p>
-
-          {this.state.workoutType !== "fortime" ? (
-          <p>{this.state.workoutTime} mins</p>
-          ) : ("")
-          }
-
-          <p>{this.state.repsOne} reps of {this.state.movementOne}</p>
-          <p>{this.state.repsTwo} reps of {this.state.movementTwo}</p>
-          <p>{this.state.repsThree} reps of {this.state.movementThree}</p>
-          {this.state.movementFour ? (
-            <p>{this.state.repsFour} reps of {this.state.movementFour}</p>
-          ) : ("")
-          }
-           {this.state.movementFive ? (
-          <p>{this.state.repsFive} reps of {this.state.movementFive}</p>
-          ) : ("")
-          }
-          
-           </Message>
-          ):("")
-          }
-       
-      </div>
+              {this.state.workoutType ? (
+                <Message>
+                  Your Custom Workout for Today: <br></br>
+                  <p>{this.state.workoutType}</p>
+                  {this.state.workoutType !== "fortime" ? (
+                    <p>{this.state.workoutTime} mins</p>
+                  ) : (
+                    ""
+                  )}
+                  <p>
+                    {this.state.repsOne} reps of {this.state.movementOne}
+                  </p>
+                  <p>
+                    {this.state.repsTwo} reps of {this.state.movementTwo}
+                  </p>
+                  <p>
+                    {this.state.repsThree} reps of {this.state.movementThree}
+                  </p>
+                  {this.state.movementFour ? (
+                    <p>
+                      {this.state.repsFour} reps of {this.state.movementFour}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {this.state.movementFive ? (
+                    <p>
+                      {this.state.repsFive} reps of {this.state.movementFive}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </Message>
+              ) : (
+                ""
+              )}
+            </div>
+          );
+        }}
+      </userContext.Consumer>
     );
   }
 }

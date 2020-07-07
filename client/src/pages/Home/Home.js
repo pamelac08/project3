@@ -8,16 +8,23 @@ import "./style.css";
 import { userContext } from "../../userContext";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  };
+
 
   render() {
     return (
       <userContext.Consumer>
-
         {({user, logoutUser}) => {
           return (
             <div className="Home">
-              <NavBar />
-              <Button onClick={logoutUser}>Logout</Button>
+              <NavBar 
+                logout={logoutUser}
+                active="Home"
+                />
               <AppHeader/>
               <div id="buttons">
                 <Button as={Link} to="/workout" color="teal" size="massive" >Start Your Workout</Button>
@@ -30,8 +37,8 @@ class Home extends Component {
           )
         }}
       </userContext.Consumer>  
-    )  
-  }
-}
+    );  
+  };
+};
 
 export default Home;

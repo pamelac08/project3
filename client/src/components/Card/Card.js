@@ -1,17 +1,25 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react';
+import "./style.css";
 
-// const description = [
-//   '** ** **.',
-//   '** ** **',
-// ].join(' ')
 
 const HabitCard = (props) => (
   <Card className="habitCard">
-    <Card.Content header='Habit'  />
-    <Card.Content description={props.description} />
+    <Card.Content header={props.name}  />
+    <Card.Content>{props.interval}  ||  Target: {props.frequency} </Card.Content>
+    <Card.Content>Reward: {props.reward} </Card.Content>
+    <Button
+      onClick={props.checkComplete}
+      value={props.value}
+      name={props.counter}
+      data-freq={props.frequency}
+      >Complete One Interval</Button>
+    <Button 
+      onClick={props.delete}
+      value={props.value}
+      >Remove Habit</Button>
     <Card.Content extra>
-      <Icon name='user' />4 Friends
+      Total completed: {props.counter} 
     </Card.Content>
   </Card>
 )

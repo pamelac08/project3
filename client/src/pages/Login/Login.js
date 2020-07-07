@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   Form,
@@ -7,17 +8,16 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-
-
+import { userContext } from "../../userContext";
+import AppHeader from "../../components/Header/header";
 
 class LoginForm extends Component {
- 
   state = {
     email: "",
     password: "",
-    user: {}
+    user: {},
   };
- 
+
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -25,79 +25,91 @@ class LoginForm extends Component {
     });
   };
 
-  handleSubmitForm = (event) => {
-    event.preventDefault();
+  // handleSubmitForm = (event) => {
+  //   event.preventDefault();
 
-    LOGINAPI.loginUser({
-      email: this.state.email,
-      password: this.state.password,
-    })
-      .then((res) => {
+  //   LOGINAPI.loginUser({
+  //     email: this.state.email,
+  //     password: this.state.password,
+  //   })
+  //     .then((res) => {
 
-        console.log("res - login: ", res.data);
+  //       console.log("res - login: ", res.data);
 
-        this.setState({
-          email: "",
-          password: "",
-          user: res.data,
-          redirect: true,
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-
-  
+  //       this.setState({
+  //         email: "",
+  //         password: "",
+  //         user: res.data,
+  //         redirect: true,
+  //       });
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   render() {
     return (
-      <div>
-        <Grid
-          textAlign="center"
-          style={{ height: "100vh" }}
-          verticalAlign="top"
-        >
-          <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as="h2" color="teal" textAlign="center">
-              Log-in to your account
-            </Header>
-            <Form size="large">
-              <Segment stacked>
-                <Form.Input
-                  fluid
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="E-mail address"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                />
-                <Form.Input
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChange}
-                />
+      <userContext.Consumer>
+        {({handleSubmitForm}) => {
+          return (
+            <div>
+                <AppHeader />
+                <div>
+                  <Grid
+                    textAlign="center"
+                    style={{ height: "100vh" }}
+                    verticalAlign="top"
+                  >
+                    <Grid.Column style={{ maxWidth: 500 }}>
+                      <Header as="h2" color="teal" textAlign="center">
+                        Log-in to your account
+                      </Header>
+                      <Form size="large">
+                        <Segment stacked>
+                          <Form.Input
+                            fluid
+                            icon="user"
+                            iconPosition="left"
+                            placeholder="E-mail address"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                          />
+                          <Form.Input
+                            fluid
+                            icon="lock"
+                            iconPosition="left"
+                            placeholder="Password"
+                            type="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                          />
 
-                <Button
-                  color="teal"
-                  fluid
-                  size="large"
-                  onClick={this.handleSubmitForm}
-                >
-                  Login
-                </Button>
-              </Segment>
-            </Form>
-            <Message>
-              New to us? <a href="/signup">Sign Up</a>
-            </Message>
-          </Grid.Column>
-        </Grid>
-      </div>
+                          <Button
+                            color="teal"
+                            fluid
+                            size="large"
+                            onClick={handleSubmitForm}
+                            value={this.state.email}
+                            name={this.state.password}
+                          >
+                            Login
+                          </Button>
+                        </Segment>
+                      </Form>
+                      <Message>
+                        New to us?{" "}
+                        <Button as={Link} to="/signup">
+                          Sign Up
+                        </Button>
+                      </Message>
+                    </Grid.Column>
+                  </Grid>
+                </div>
+            </div>
+          );
+        }}
+      </userContext.Consumer>
     );
   }
 }

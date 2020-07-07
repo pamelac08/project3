@@ -21,7 +21,7 @@ router.post("/api/auth/signup", (req, res) => {
     verifySignUp.checkDuplicateUsernameOrEmail(req, res),
     // verifySignUp.checkRolesExisted(req, res)
   ],
-    controller.signup(req);
+    controller.signup(req, res);
 });
 
 router.post("/api/auth/signin", (req, res) => {
