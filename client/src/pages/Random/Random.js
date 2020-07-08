@@ -8,7 +8,6 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 class Random extends Component {
-  
   constructor(props) {
     super(props);
 
@@ -16,10 +15,10 @@ class Random extends Component {
       goal: "",
       interval: "todayonly",
       frequency: 1,
-      habits: []
+      habits: [],
     };
-  };
-  
+  }
+
   goals = [
     "Drink 64 oz of Water",
     "Eat no added sugar",
@@ -31,7 +30,7 @@ class Random extends Component {
   componentDidMount() {
     this.getStoredDateAndGoal();
     this.getHabits();
-  };
+  }
 
   getHabits() {
     API.getAllHabits().then((res) => {
@@ -49,12 +48,15 @@ class Random extends Component {
           // counter: habit.counter
         })
       );
-      console.log("habitArray object array, in didMount random page: ", habitArray);
+      console.log(
+        "habitArray object array, in didMount random page: ",
+        habitArray
+      );
       this.setState({
         habits: habitArray,
       });
     });
-  };
+  }
 
   getStoredDateAndGoal() {
     const todayDate = moment().format("YYYYMMDD");
@@ -62,21 +64,21 @@ class Random extends Component {
     if (date === todayDate) {
       const storedGoal = JSON.parse(localStorage.getItem("goal"));
       this.setState({
-        goal: storedGoal
+        goal: storedGoal,
       });
     } else {
       this.randomGoal(todayDate);
-    };
-  };
+    }
+  }
 
   randomGoal(today) {
     let goal = this.goals[Math.floor(Math.random() * this.goals.length)];
-    this.setState({ 
-      goal: goal
+    this.setState({
+      goal: goal,
     });
     localStorage.setItem("goal", JSON.stringify(goal));
     localStorage.setItem("date", JSON.stringify(today));
-  };
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -86,17 +88,21 @@ class Random extends Component {
     for (let index = 0; index < habitsArray.length; index++) {
       const element = habitsArray[index];
 
-      if (this.state.goal === element.name && this.state.interval === element.interval && event.target.value === element.user) {
+      if (
+        this.state.goal === element.name &&
+        this.state.interval === element.interval &&
+        event.target.value === element.user
+      ) {
         alert("Already added to tracker, you're all set!");
         return;
-      };
-    };
+      }
+    }
 
     API.saveHabit({
       name: this.state.goal,
       interval: this.state.interval,
       frequency: this.state.frequency,
-      user: event.target.value
+      user: event.target.value,
     })
       .then((res) => {
         console.log(res);
@@ -111,7 +117,7 @@ class Random extends Component {
         {({ user, logoutUser }) => {
           return (
             <div>
-              <Navbar logout={logoutUser} active="Random Goal OTD"/>
+              <Navbar logout={logoutUser} active="Random Goal OTD" />
               <AppHeader />
               <Grid
                 columns="three"
@@ -138,13 +144,9 @@ class Random extends Component {
                     >
                       Add to Tracker
                     </Button>
-                    <br></br><br></br>
-                    <Button
-                    color="teal"
-                    size="massive"
-                    as={Link}
-                    to="/habits"
-                    >
+                    <br></br>
+                    <br></br>
+                    <Button color="teal" size="massive" as={Link} to="/habits">
                       Go to Tracker
                     </Button>
                   </Grid.Column>
@@ -156,6 +158,6 @@ class Random extends Component {
         }}
       </userContext.Consumer>
     );
-  };
-};
+  }
+}
 export default Random;

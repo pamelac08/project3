@@ -1,6 +1,13 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import {Button,Form,Grid,Header,Segment,Dropdown,} from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Segment,
+  Dropdown,
+} from "semantic-ui-react";
 import API from "../../utils/API";
 import LOGINAPI from "../../utils/LoginAPI";
 import "./style.css";
@@ -45,12 +52,12 @@ class Admin extends Component {
         });
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   componentDidMount() {
     this.getMovements();
     this.getUsers();
-  };
+  }
 
   getOptions = (array) =>
     _.times(array.length, (index) => ({
@@ -83,7 +90,7 @@ class Admin extends Component {
         console.log("equipment updated");
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   updateMovementFocus() {
     API.updateMovementFocus(this.state.nameNew, {
@@ -94,7 +101,7 @@ class Admin extends Component {
         console.log("focus updated");
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   updateMovementScaled() {
     API.updateMovementScaled(this.state.nameNew, {
@@ -105,7 +112,7 @@ class Admin extends Component {
         console.log("scaled updated");
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   resetState() {
     this.setState({
@@ -113,7 +120,7 @@ class Admin extends Component {
       focusNew: "",
       scaledNew: "",
     });
-  };
+  }
 
   deleteMovement = (event) => {
     event.preventDefault();
@@ -178,7 +185,7 @@ class Admin extends Component {
         });
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   getUserOptions = (array) =>
     _.times(array.length, (index) => ({
@@ -221,7 +228,6 @@ class Admin extends Component {
     return (
       <userContext.Consumer>
         {({ user, logoutUser }) => {
-
           if (user.role === "admin") {
             return (
               <div>

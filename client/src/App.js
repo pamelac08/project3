@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
@@ -25,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     this.isUserAuthenticated();
-  };
+  }
 
   isUserAuthenticated() {
     const user = JSON.parse(localStorage.getItem("user")) || {};
@@ -34,12 +39,12 @@ class App extends Component {
         authenticated: true,
         user,
       });
-    };
-  };
+    }
+  }
 
   saveUser(user) {
     localStorage.setItem("user", JSON.stringify(user));
-  };
+  }
 
   handleSubmitForm = this.handleSubmitForm.bind(this);
   handleSubmitForm(event) {
@@ -60,25 +65,23 @@ class App extends Component {
         });
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   isEmpty(obj) {
     for (var key in obj) {
       if (obj.hasOwnProperty(key)) return false;
     }
     return true;
-  };
+  }
 
   logout = this.logout.bind(this);
   logout() {
     this.setState({ user: {} });
     localStorage.removeItem("user");
-    return <Redirect to="/" />
-  };
-
+    return <Redirect to="/" />;
+  }
 
   render() {
-
     if (!this.isEmpty(this.state.user)) {
       const value = {
         user: this.state.user,
@@ -87,20 +90,20 @@ class App extends Component {
 
       return (
         <userContext.Provider value={value}>
-                  <div className="App">
-                    <Router>
-                      <Switch>
-                        <Route exact path="/workout" component={StartWorkout} />
-                        <Route exact path="/create-workout" component={CreateWorkout} />
-                        <Route exact path="/rewards" component={Rewards} />
-                        <Route exact path="/habits" component={Habits} />
-                        <Route exact path="/random" component={Random}/>
-                        <Route exact path="/admin" component={Admin} />
-                        <Route path="/" component={Home} />
-                      </Switch>
-                    </Router>
-                    <Footer/>
-                  </div>
+          <div className="App">
+            <Router>
+              <Switch>
+                <Route exact path="/workout" component={StartWorkout} />
+                <Route exact path="/create-workout" component={CreateWorkout} />
+                <Route exact path="/rewards" component={Rewards} />
+                <Route exact path="/habits" component={Habits} />
+                <Route exact path="/random" component={Random} />
+                <Route exact path="/admin" component={Admin} />
+                <Route path="/" component={Home} />
+              </Switch>
+            </Router>
+            <Footer />
+          </div>
         </userContext.Provider>
       );
     } else {
@@ -116,10 +119,10 @@ class App extends Component {
                 <Route path="/" component={Login} />
               </Switch>
             </Router>
-            <Footer/>
+            <Footer />
           </div>
         </userContext.Provider>
-      )
+      );
     }
   }
 }

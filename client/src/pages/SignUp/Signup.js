@@ -10,7 +10,7 @@ class Signup extends Component {
     email: "",
     password: "",
     redirect: false,
-    role: "user"
+    role: "user",
   };
 
   handleInputChange = (event) => {
@@ -27,84 +27,83 @@ class Signup extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-      role: this.state.role
+      role: this.state.role,
     })
       .then((res) => {
-        console.log("res - create user: ", res)
+        console.log("res - create user: ", res);
         this.setState({
           username: "",
           email: "",
           password: "",
           redirect: true,
-        })
+        });
       })
       .catch((err) => console.log("err - create user: ", err));
   };
 
   render() {
-
     if (this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     return (
       <div>
-        <AppHeader/>
-      <div>
-        <Grid
-          textAlign="center"
-          style={{ height: "100vh" }}
-          verticalAlign="top"
-        >
-          <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as="h2" color="teal" textAlign="center">
-              Sign Up
-            </Header>
-            <Form size="large">
-              <Segment stacked>
-                <Form.Input
-                  fluid
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="Name"
-                  type="name"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleInputChange}
-                />
-                <Form.Input
-                  fluid
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="E-mail address"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                />
-                <Form.Input
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChange}
-                />
+        <AppHeader />
+        <div>
+          <Grid
+            textAlign="center"
+            style={{ height: "100vh" }}
+            verticalAlign="top"
+          >
+            <Grid.Column style={{ maxWidth: 500 }}>
+              <Header as="h2" color="teal" textAlign="center">
+                Sign Up
+              </Header>
+              <Form size="large">
+                <Segment stacked>
+                  <Form.Input
+                    fluid
+                    icon="user"
+                    iconPosition="left"
+                    placeholder="Name"
+                    type="name"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Input
+                    fluid
+                    icon="user"
+                    iconPosition="left"
+                    placeholder="E-mail address"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Input
+                    fluid
+                    icon="lock"
+                    iconPosition="left"
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                  />
 
-                <Button
-                  color="teal"
-                  fluid
-                  size="large"
-                  onClick={this.handleSubmitForm}
-                >
-                  Create Account
-                </Button>
-              </Segment>
-            </Form>
-          </Grid.Column>
-        </Grid>
-      </div>
+                  <Button
+                    color="teal"
+                    fluid
+                    size="large"
+                    onClick={this.handleSubmitForm}
+                  >
+                    Create Account
+                  </Button>
+                </Segment>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </div>
       </div>
     );
   }

@@ -7,7 +7,6 @@ import AppHeader from "../../components/Header/header";
 import { userContext } from "../../userContext";
 
 class Rewards extends Component {
-
   render() {
     return (
       <userContext.Consumer>

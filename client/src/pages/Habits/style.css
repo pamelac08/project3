@@ -1,8 +1,8 @@
 .ui.card.habitCard {
-    float: left;
+  float: left;
 }
 
 .allCards,
 .submitForm {
-    clear: both;
+  clear: both;
 }

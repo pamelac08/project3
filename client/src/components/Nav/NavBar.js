@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 export default class nav extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      activeItem: ""
+      activeItem: "",
     };
-  };
-  
+  }
+
   componentDidMount() {
-    this.setState({activeItem: this.props.active});
-  };
+    this.setState({ activeItem: this.props.active });
+  }
 
   render() {
     const { activeItem } = this.state;
@@ -23,52 +22,66 @@ export default class nav extends Component {
     return (
       <Menu inverted>
         <Menu.Item>
-          <Button 
+          <Button
             name="Home"
             active={activeItem === "Home"}
-            as={Link} 
-            to="/" 
-            secondary>
+            as={Link}
+            to="/"
+            secondary
+          >
             Home
           </Button>
         </Menu.Item>
 
         <Menu.Item>
-          <Button 
+          <Button
             name="Start Workout"
             active={activeItem === "Start Workout"}
-            as={Link} to="/workout" secondary>
+            as={Link}
+            to="/workout"
+            secondary
+          >
             Start Workout
           </Button>
         </Menu.Item>
 
         <Menu.Item>
-          <Button 
+          <Button
             name="Rewards Tracker"
             active={activeItem === "Rewards Tracker"}
-            as={Link} to="/rewards" secondary>
+            as={Link}
+            to="/rewards"
+            secondary
+          >
             Rewards Tracker
           </Button>
         </Menu.Item>
 
         <Menu.Item>
-          <Button 
+          <Button
             name="Random Goal OTD"
             active={activeItem === "Random Goal OTD"}
-            as={Link} to="/random" secondary>
-            Random Goal OTD</Button>
+            as={Link}
+            to="/random"
+            secondary
+          >
+            Random Goal OTD
+          </Button>
         </Menu.Item>
 
         <Menu.Item>
-          <Button 
+          <Button
             name="Admin Menu"
             active={activeItem === "Admin Menu"}
-            as={Link} to="/admin" secondary>
+            as={Link}
+            to="/admin"
+            secondary
+          >
             Admin Menu
           </Button>
         </Menu.Item>
 
-        <Menu.Menu position='right'>
+        <Menu.Menu position="right">
           {/* <Menu.Item
               name='Login'
               active={activeItem === 'Login'}
@@ -79,7 +92,9 @@ export default class nav extends Component {
           </Menu.Item> */}
 
           <Menu.Item>
-          <Button onClick={this.props.logout} secondary>Logout</Button>
+            <Button onClick={this.props.logout} secondary>
+              Logout
+            </Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

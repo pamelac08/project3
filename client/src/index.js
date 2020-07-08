@@ -8,8 +8,6 @@ import * as serviceWorker from "./serviceWorker";
 // import store from "./js/store/index";
 // import {Provider} from "react-redux";
 
-
-
 ReactDOM.render(
   // <React.StrictMode>
   <App />,
