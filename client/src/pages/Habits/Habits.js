@@ -72,7 +72,7 @@ class Habits extends Component {
           habitFrequency: "",
           reward: "",
         });
-        this.refreshPage();
+        this.getHabits();
       })
       .catch((err) => console.log(err));
   };
@@ -107,14 +107,14 @@ class Habits extends Component {
     })
       .then((res) => {
         console.log("counter incremented");
-        this.refreshPage();
+        this.getHabits();
       })
       .catch((err) => console.log(err));
   };
 
-  refreshPage() {
-    window.location.reload(false);
-  }
+  // refreshPage() {
+  //   window.location.reload(false);
+  // }
 
   deleteHabit = (event) => {
     event.preventDefault();
@@ -122,7 +122,7 @@ class Habits extends Component {
     API.deleteHabit(event.target.value)
       .then((res) => {
         console.log("delete habit complete");
-        this.refreshPage();
+        this.getHabits();
       })
       .catch((err) => console.log(err));
   };
