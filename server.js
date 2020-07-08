@@ -24,8 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 mongoose
-  .connect(process.env.MONGODB_URI || `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
+  .connect(process.env.MONGODB_URI || `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {    useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
