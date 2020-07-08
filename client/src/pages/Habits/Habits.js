@@ -7,10 +7,9 @@ import HabitCard from "../../components/Card/Card";
 import "./style.css";
 import { userContext } from "../../userContext";
 class Habits extends Component {
-
   constructor(props) {
     super(props);
- 
+
     this.state = {
       habitName: "",
       habitInterval: "",
@@ -18,13 +17,13 @@ class Habits extends Component {
       reward: "",
       redirect: false,
       habits: [],
-      habitsFilter: []
+      habitsFilter: [],
     };
-  };
+  }
 
   componentDidMount() {
     this.getHabits();
-  };
+  }
 
   getHabits() {
     API.getAllHabits().then((res) => {
@@ -39,7 +38,7 @@ class Habits extends Component {
           reward: habit.reward,
           id: habit._id,
           user: habit.user,
-          counter: habit.counter
+          counter: habit.counter,
         })
       );
       console.log("habitArray object array, in didMount: ", habitArray);
@@ -47,7 +46,7 @@ class Habits extends Component {
         habits: habitArray,
       });
     });
-  };
+  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +63,7 @@ class Habits extends Component {
       interval: this.state.habitInterval,
       frequency: this.state.habitFrequency,
       reward: this.state.reward,
-      user: event.target.value
+      user: event.target.value,
     })
       .then((res) => {
         this.setState({
@@ -82,19 +81,18 @@ class Habits extends Component {
     event.preventDefault();
     let frequency = parseInt(event.target.dataset.freq);
     let nextIncrement = parseInt(event.target.name);
-    let nextIncrementNum = nextIncrement+=1;
+    let nextIncrementNum = (nextIncrement += 1);
 
     if (frequency === nextIncrementNum) {
       API.incrementHabitCounter(event.target.value, {
-        counter: 0
+        counter: 0,
       })
-      .then((res)=> {
-        console.log("counter reset");
-        alert("congrats, collect your reward.  Habit Counter has reset!")
-      })
-      .catch((err) => console.log(err));
-    }
-    else {
+        .then((res) => {
+          console.log("counter reset");
+          alert("congrats, collect your reward.  Habit Counter has reset!");
+        })
+        .catch((err) => console.log(err));
+    } else {
       this.incrementCounter(event);
     }
   };
@@ -102,21 +100,21 @@ class Habits extends Component {
   incrementCounter = (event) => {
     event.preventDefault();
     let nextIncrement = parseInt(event.target.name);
-    let nextIncrementNum = nextIncrement+=1;
+    let nextIncrementNum = (nextIncrement += 1);
 
     API.incrementHabitCounter(event.target.value, {
-        counter: nextIncrementNum
+      counter: nextIncrementNum,
     })
-    .then((res)=> {
-      console.log("counter incremented");
-      this.refreshPage();
-    })
-    .catch((err) => console.log(err));
+      .then((res) => {
+        console.log("counter incremented");
+        this.refreshPage();
+      })
+      .catch((err) => console.log(err));
   };
 
   refreshPage() {
     window.location.reload(false);
-  };
+  }
 
   deleteHabit = (event) => {
     event.preventDefault();
@@ -128,7 +126,6 @@ class Habits extends Component {
       })
       .catch((err) => console.log(err));
   };
-  
 
   render() {
     return (
@@ -141,19 +138,20 @@ class Habits extends Component {
 
               <div className="allCards">
                 {this.state.habits
-                .filter(habit =>  habit.user === user.username)
-                .map((habit, i) => (
-                  <HabitCard key={i} 
-                  name={habit.name} 
-                  reward={habit.reward}
-                  interval={habit.interval}
-                  frequency={habit.frequency}
-                  counter={habit.counter}
-                  checkComplete={this.checkForCompletion}
-                  delete={this.deleteHabit}
-                  value={habit.id}
-                  />
-                ))}
+                  .filter((habit) => habit.user === user.username)
+                  .map((habit, i) => (
+                    <HabitCard
+                      key={i}
+                      name={habit.name}
+                      reward={habit.reward}
+                      interval={habit.interval}
+                      frequency={habit.frequency}
+                      counter={habit.counter}
+                      checkComplete={this.checkForCompletion}
+                      delete={this.deleteHabit}
+                      value={habit.id}
+                    />
+                  ))}
               </div>
               <div className="submitForm">
                 <Grid

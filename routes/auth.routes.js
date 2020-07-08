@@ -25,7 +25,6 @@ router.post("/api/auth/signup", (req, res) => {
 });
 
 router.post("/api/auth/signin", (req, res) => {
-
   controller.signin(req, res);
 });
 

@@ -217,7 +217,7 @@ class CreateWorkout extends Component {
         allMovements: res.data,
       });
     });
-  };
+  }
 
   handleDropdownChange = (event, data) => {
     console.log(data.value);

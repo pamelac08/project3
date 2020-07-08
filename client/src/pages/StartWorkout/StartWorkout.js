@@ -22,7 +22,7 @@ class StartWorkout extends Component {
     this._isMounted = true;
     let newDate = moment().format("YYMMDD");
     this.getWOD(newDate);
-  };
+  }
 
   getWOD = (date) => {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -41,10 +41,10 @@ class StartWorkout extends Component {
           workout.push(result);
         });
 
-        let lastIndex = workout.length-1;
+        let lastIndex = workout.length - 1;
         console.log("lastindex: ", lastIndex);
 
-        let wodFilter = workout.filter((workout, i) => i !== lastIndex)
+        let wodFilter = workout.filter((workout, i) => i !== lastIndex);
 
         this.setState({
           wod: wodFilter,
@@ -55,7 +55,7 @@ class StartWorkout extends Component {
 
   componentWillUnmount() {
     this._isMounted = false;
-  };
+  }
 
   render() {
     return (
@@ -85,7 +85,13 @@ class StartWorkout extends Component {
                         </div>
                       ))}
                       <br></br>
-                      <a href="https://www.crossfit.com/workout/" target="_blank" rel="noopener noreferrer">Go to Crossfit Workout Page</a>
+                      <a
+                        href="https://www.crossfit.com/workout/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Go to Crossfit Workout Page
+                      </a>
                     </Message>
                   ) : (
                     "No workout is available"

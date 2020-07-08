@@ -11,13 +11,22 @@ export default {
     return axios.get("/api/coach/" + id);
   },
   updateMovementEquipment: function (id, updateObject) {
-    return axios.put("http://localhost:3001/api/coach/equipment/" + id, updateObject);
+    return axios.put(
+      "http://localhost:3001/api/coach/equipment/" + id,
+      updateObject
+    );
   },
   updateMovementFocus: function (id, updateObject) {
-    return axios.put("http://localhost:3001/api/coach/focus/" + id, updateObject);
+    return axios.put(
+      "http://localhost:3001/api/coach/focus/" + id,
+      updateObject
+    );
   },
   updateMovementScaled: function (id, updateObject) {
-    return axios.put("http://localhost:3001/api/coach/scaled/" + id, updateObject);
+    return axios.put(
+      "http://localhost:3001/api/coach/scaled/" + id,
+      updateObject
+    );
   },
   deleteMovement: function (id) {
     return axios.delete("http://localhost:3001/api/coach/" + id);
