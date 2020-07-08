@@ -25,27 +25,6 @@ class LoginForm extends Component {
     });
   };
 
-  // handleSubmitForm = (event) => {
-  //   event.preventDefault();
-
-  //   LOGINAPI.loginUser({
-  //     email: this.state.email,
-  //     password: this.state.password,
-  //   })
-  //     .then((res) => {
-
-  //       console.log("res - login: ", res.data);
-
-  //       this.setState({
-  //         email: "",
-  //         password: "",
-  //         user: res.data,
-  //         redirect: true,
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
   render() {
     return (
       <userContext.Consumer>
