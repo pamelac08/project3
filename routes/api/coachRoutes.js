@@ -12,17 +12,11 @@ router
   .get(appController.findOneMovement)
   .delete(appController.removeMovement);
 
-router
-  .route("/equipment/:id")
-  .put(appController.updateMovementEquipment);
+router.route("/equipment/:id").put(appController.updateMovementEquipment);
 
-router
-  .route("/focus/:id")
-  .put(appController.updateMovementFocus);
+router.route("/focus/:id").put(appController.updateMovementFocus);
 
-router
-  .route("/scaled/:id")
-  .put(appController.updateMovementScaled);
+router.route("/scaled/:id").put(appController.updateMovementScaled);
 
 router
   .route("/habits/:id")
@@ -32,7 +26,7 @@ router
 
 router
   .route("/users/:id")
-  .put(appController.updateUser) 
-  .delete(appController.removeUser); 
+  .put(appController.updateUser)
+  .delete(appController.removeUser);
 
 module.exports = router;
