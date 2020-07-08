@@ -30,14 +30,11 @@
     "lodash": "^4.17.15",
     "moment": "^2.27.0",
     "mongoose": "^5.9.19",
-    "react-moment": "^0.9.7",
-    "react-router-dom": "^5.2.0",
     "request": "^2.79.0",
     "semantic-ui-react": "^0.88.2",
     "typescript": "^3.9.5"
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.20.0",
-    "react-redux": "^7.2.0"
+    "eslint-plugin-react": "^7.20.0"
   }
 }
