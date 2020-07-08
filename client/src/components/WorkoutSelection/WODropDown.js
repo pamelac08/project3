@@ -1,13 +1,7 @@
+import React from "react";
+import { Dropdown } from "semantic-ui-react";
 
-import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
-
-
-
-
-
-
-const WOCDropDown = props => (
+const WOCDropDown = (props) => (
   <Dropdown
     placeholder={props.fieldName}
     fluid
@@ -18,6 +12,6 @@ const WOCDropDown = props => (
     name={props.name}
     onChange={props.onChange}
   />
-)
+);
 
-export default WOCDropDown
+export default WOCDropDown;

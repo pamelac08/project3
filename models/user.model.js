@@ -12,7 +12,7 @@ const User = mongoose.model(
         ref: "Role",
       },
     ],
-    role: {type: String}
+    role: { type: String },
   })
 );
 

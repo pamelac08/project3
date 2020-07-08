@@ -6,7 +6,6 @@ const db = require("../models");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
-
 exports.signup = (req, res) => {
   let user;
 
@@ -16,7 +15,7 @@ exports.signup = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
-    role: req.body.role
+    role: req.body.role,
   });
 
   console.log("testing before create user - user: ", user);
@@ -26,7 +25,7 @@ exports.signup = (req, res) => {
     console.log("testing inside create user - err: ", err);
 
     if (err) {
-      console.log("err - create user: ", err)
+      console.log("err - create user: ", err);
       res.end({ message: err });
       return;
     } else {
@@ -81,7 +80,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   db.User.findOne({
-    email: req.body.email
+    email: req.body.email,
   })
     .populate("roles", "-__v")
     .exec((err, user) => {
@@ -122,7 +121,7 @@ exports.signin = (req, res) => {
         email: user.email,
         roles: authorities,
         accessToken: token,
-        role: user.role
+        role: user.role,
       });
     });
 };

@@ -20,7 +20,7 @@ module.exports = {
   updateMovementEquipment: function (req, res) {
     db.Movement.updateOne(
       { _id: req.params.id },
-      {$set: { "equipment": req.body.equipment}},
+      { $set: { equipment: req.body.equipment } },
       { saved: true }
     )
       .then((dbModel) => res.json(dbModel))
@@ -29,7 +29,7 @@ module.exports = {
   updateMovementFocus: function (req, res) {
     db.Movement.updateOne(
       { _id: req.params.id },
-      {$set: { "focus": req.body.focus}},
+      { $set: { focus: req.body.focus } },
       { saved: true }
     )
       .then((dbModel) => res.json(dbModel))
@@ -38,7 +38,7 @@ module.exports = {
   updateMovementScaled: function (req, res) {
     db.Movement.updateOne(
       { _id: req.params.id },
-      { "scaled": req.body.scaled},
+      { scaled: req.body.scaled },
       { saved: true }
     )
       .then((dbModel) => res.json(dbModel))
@@ -68,7 +68,11 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   updateHabitCounter: function (req, res) {
-    db.Habit.findOneAndUpdate({ _id: req.params.id },{counter: req.body.counter}, { saved: true })
+    db.Habit.findOneAndUpdate(
+      { _id: req.params.id },
+      { counter: req.body.counter },
+      { saved: true }
+    )
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -87,9 +91,9 @@ module.exports = {
   updateUser: function (req, res) {
     db.User.findOneAndUpdate(
       { _id: req.params.id },
-      { 
+      {
         // $set: {username: req.body.username},
-        $set: {role: req.body.role} 
+        $set: { role: req.body.role },
       },
       { saved: true }
     )
