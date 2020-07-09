@@ -20,47 +20,48 @@ class StartWorkout extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    let newDate = moment().format("YYMMDD");
-    this.getWOD(newDate);
+    this.getWOD();
   };
-
-  getWOD = (date) => {
+  
+  getWOD = () => {
+    if (this.state.isLoading) {
+    let date = moment().format("YYMMDD");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://www.crossfit.com/";
+    const urlFirst = "https://www.crossfit.com/";
 
-    fetch(proxyurl + url + date)
+    const url = proxyurl + urlFirst + date;
+
+    fetch(url)
       .then((response) => response.text())
       .then((response) => {
-        let $ = cheerio.load(response);
-        let workout = [];
+          let $ = cheerio.load(response);
+          let workout = [];
 
-        $("._1kOqu24U9_kCLpSukpmYDZ div p").each((i, element) => {
-          let result = {};
+          $("._1kOqu24U9_kCLpSukpmYDZ div p").each((i, element) => {
+            let result = {};
 
-          result = $(element).text();
-          workout.push(result);
-        });
+            result = $(element).text();
+            workout.push(result);
+          });
+          let lastIndex = workout.length - 1;
+          let wodFilter = workout.filter((workout, i) => i !== lastIndex);
 
-        let lastIndex = workout.length - 1;
-        console.log("lastindex: ", lastIndex);
-
-        let wodFilter = workout.filter((workout, i) => i !== lastIndex);
-
-        this.setState({
-          wod: wodFilter,
-          isLoading: false,
-        });
+          this.setState({
+                wod: wodFilter,
+                isLoading: false
+          });
       });
+    };
   };
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this._isMounted = false;   
   };
 
   render() {
     return (
       <userContext.Consumer>
-        {({ user, logoutUser }) => {
+        {({ user, logoutUser}) => {
           return (
             <div>
               <NavBar logout={logoutUser} active="Start Workout" />
@@ -75,27 +76,26 @@ class StartWorkout extends Component {
                     Crossfit WOD for{" "}
                     <Moment format="MM/DD/YYYY">{this.state.date}</Moment>
                   </Header>
-
-                  {this.state.wod.length ? (
-                    <Message>
-                      {this.state.wod.map((wod, i) => (
-                        <div key={i}>
-                          {wod}
-                          <br></br>
-                        </div>
-                      ))}
-                      <br></br>
-                      <a
-                        href="https://www.crossfit.com/workout/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Go to Crossfit Workout Page
-                      </a>
-                    </Message>
-                  ) : (
-                    "No workout is available"
-                  )}
+                  <Message>
+                    {this.state.wod.length  ? (
+                      <div>
+                        {this.state.wod.map((wod, i) => (
+                          <div key={i}>
+                            {wod}
+                            <br></br>
+                          </div>
+                        ))}
+                        <br></br>
+                        <a
+                          href="https://www.crossfit.com/workout/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Go to Crossfit Workout Page
+                        </a>
+                    </div>
+                    ) : <div>No workout is available</div>}
+                  </Message>
                 </Grid.Column>
               </Grid>
 

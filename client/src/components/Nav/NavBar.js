@@ -82,15 +82,6 @@ export default class nav extends Component {
         </Menu.Item>
 
         <Menu.Menu position="right">
-          {/* <Menu.Item
-              name='Login'
-              active={activeItem === 'Login'}
-              // onClick={this.handleItemClick}
-          >
-          <Button as={Link} to="/login" secondary>Log In</Button>
-
-          </Menu.Item> */}
-
           <Menu.Item>
             <Button onClick={this.props.logout} secondary>
               Logout
