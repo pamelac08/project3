@@ -22,7 +22,7 @@ class StartWorkout extends Component {
     this._isMounted = true;
     let newDate = moment().format("YYMMDD");
     this.getWOD(newDate);
-  }
+  };
 
   getWOD = (date) => {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -55,7 +55,7 @@ class StartWorkout extends Component {
 
   componentWillUnmount() {
     this._isMounted = false;
-  }
+  };
 
   render() {
     return (
