@@ -57,7 +57,7 @@ class Admin extends Component {
   componentDidMount() {
     this.getMovements();
     this.getUsers();
-  }
+  };
 
   getOptions = (array) =>
     _.times(array.length, (index) => ({
@@ -79,6 +79,7 @@ class Admin extends Component {
       this.updateMovementScaled();
     }
     this.resetState();
+    this.getMovements();
   };
 
   updateMovementEquipment() {
@@ -130,6 +131,7 @@ class Admin extends Component {
         this.setState({
           nameNew: "",
         });
+        this.getMovements();
       })
       .catch((err) => console.log(err));
   };
@@ -151,6 +153,7 @@ class Admin extends Component {
           focus: "",
           scaled: "",
         });
+        this.getMovements();
       })
       .catch((err) => console.log(err));
   };
@@ -208,6 +211,7 @@ class Admin extends Component {
           usernameNew: "",
           roleNew: "",
         });
+        this.getUsers();
       })
       .catch((err) => console.log(err));
   };
@@ -220,6 +224,7 @@ class Admin extends Component {
         this.setState({
           emailNew: "",
         });
+        this.getUsers();
       })
       .catch((err) => console.log(err));
   };

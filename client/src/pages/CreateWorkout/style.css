@@ -2,3 +2,7 @@
   width: 50%;
   margin: 10px 25%;
 }
+
+.ui.message:last-child {
+  margin-bottom: 100px;
+}
