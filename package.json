@@ -12,8 +12,7 @@
     "seedH": "node scripts/seedsHabitDB.js",
     "seedB": "node scripts/seedsBenchmarkDB.js",
     "build": "cd client && npm run build",
-    "heroku-prebuild": "cd client && npm install",
-    "heroku-postbuild": "cd client && npm install --prefix client && npm run build --prefix client"
+    "heroku-prebuild": "cd client && npm install"
   },
   "author": "",
   "license": "ISC",
