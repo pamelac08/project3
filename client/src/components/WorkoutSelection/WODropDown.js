@@ -8,6 +8,7 @@ const WOCDropDown = (props) => (
     // multiple
     search
     selection
+    clearable
     options={props.optionData}
     name={props.name}
     onChange={props.onChange}
