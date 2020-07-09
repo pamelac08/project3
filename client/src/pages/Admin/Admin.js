@@ -318,6 +318,7 @@ class Admin extends Component {
                             label="Movement to Update"
                             placeholder="Movement to Update"
                             scrolling
+                            clearable
                             options={this.getOptions(this.state.movementNames)}
                             name="nameNew"
                             onChange={this.handleDropdownChange}
@@ -391,6 +392,7 @@ class Admin extends Component {
                             label="User to Update"
                             placeholder="Users"
                             scrolling
+                            clearable
                             options={this.getUserOptions(this.state.userEmails)}
                             name="emailNew"
                             onChange={this.handleDropdownChange}
